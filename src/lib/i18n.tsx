@@ -2,6 +2,38 @@ import React, { createContext, useContext, useState, useCallback, ReactNode } fr
 
 export type Language = 'ko' | 'en';
 
+const LANGUAGE_COOKIE_NAME = 'fvm-language';
+const COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year in seconds
+
+function getCookie(name: string): string | null {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : null;
+}
+
+function setCookie(name: string, value: string, maxAge: number): void {
+  document.cookie = `${name}=${value};path=/;max-age=${maxAge};SameSite=Lax`;
+}
+
+function getInitialLanguage(): Language {
+  // 1. Check cookie first
+  const cookieValue = getCookie(LANGUAGE_COOKIE_NAME);
+  if (cookieValue === 'ko' || cookieValue === 'en') {
+    return cookieValue;
+  }
+
+  // 2. Check browser language
+  const browserLang = navigator.language || (navigator as any).userLanguage;
+  if (browserLang) {
+    const langCode = browserLang.split('-')[0].toLowerCase();
+    if (langCode === 'en') {
+      return 'en';
+    }
+  }
+
+  // 3. Default to Korean
+  return 'ko';
+}
+
 interface Translations {
   [key: string]: {
     ko: string;
@@ -120,7 +152,12 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('ko');
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+
+  const setLanguage = useCallback((lang: Language) => {
+    setLanguageState(lang);
+    setCookie(LANGUAGE_COOKIE_NAME, lang, COOKIE_MAX_AGE);
+  }, []);
 
   const t = useCallback((key: string): string => {
     const translation = translations[key];
