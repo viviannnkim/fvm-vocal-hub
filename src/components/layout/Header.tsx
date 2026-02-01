@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe, Sun, Moon, Mic, Monitor, Users, Globe as GlobeIcon, Sprout } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n';
+import { useTheme } from '@/hooks/use-theme';
 import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
@@ -14,16 +15,25 @@ import {
 import { cn } from '@/lib/utils';
 
 const services = [
-  { key: 'private', path: '/services/private', icon: '🎤' },
-  { key: 'online', path: '/services/online', icon: '💻' },
-  { key: 'group', path: '/services/group', icon: '👥' },
-  { key: 'global', path: '/services/global', icon: '🌍' },
-  { key: 'kids', path: '/services/kids', icon: '🌱' },
+  { key: 'private', path: '/services/private', icon: Mic },
+  { key: 'online', path: '/services/online', icon: Monitor },
+  { key: 'group', path: '/services/group', icon: Users },
+  { key: 'global', path: '/services/global', icon: GlobeIcon },
+  { key: 'kids', path: '/services/kids', icon: Sprout },
 ];
+
+function KakaoIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+      <path d="M10 0C4.4767 0 0 3.46596 0 7.74549C0 10.5302 1.89737 12.9709 4.74004 14.3335C4.53072 15.1007 3.98379 17.1049 3.87576 17.5348C3.74072 18.0706 4.07157 18.0574 4.2944 17.9185C4.46995 17.806 7.03579 16.0929 8.14315 15.3587C8.74409 15.4447 9.36529 15.491 10 15.491C15.5233 15.491 20 12.025 20 7.74549C20 3.46596 15.5233 0 10 0Z" fill="#371C1D"/>
+    </svg>
+  );
+}
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
   const navLinks = [
@@ -31,8 +41,6 @@ export function Header() {
     { path: '/curriculum', label: t('nav.curriculum') },
     { path: '/instructors', label: t('nav.instructors') },
     { path: '/reviews', label: t('nav.reviews') },
-    { path: '/blog', label: t('nav.blog') },
-    { path: '/contact', label: t('nav.contact') },
   ];
 
   const toggleLanguage = () => {
@@ -53,7 +61,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-2 lg:flex">
           <Link
             to="/"
             className={cn(
@@ -80,7 +88,7 @@ export function Header() {
                             className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent/10 hover:text-accent focus:bg-accent/10"
                           >
                             <div className="flex items-center gap-2 text-sm font-medium leading-none">
-                              <span>{service.icon}</span>
+                              <service.icon className="h-4 w-4 text-accent" />
                               {t(`service.${service.key}`)}
                             </div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
@@ -122,6 +130,21 @@ export function Header() {
 
         {/* Right Section */}
         <div className="flex items-center gap-2">
+          {/* Theme Toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className="hidden sm:flex"
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </Button>
+
           {/* Language Toggle */}
           <Button
             variant="ghost"
@@ -136,10 +159,11 @@ export function Header() {
           {/* CTA Button */}
           <Button asChild className="hidden bg-accent text-accent-foreground hover:bg-accent/90 sm:flex">
             <a
-              href="https://pf.kakao.com/_example"
+              href="https://pf.kakao.com/_WvSxjxj"
               target="_blank"
               rel="noopener noreferrer"
             >
+              <KakaoIcon />
               {t('cta.kakao')}
             </a>
           </Button>
@@ -189,7 +213,7 @@ export function Header() {
                     className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-foreground/80 hover:bg-muted"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span>{service.icon}</span>
+                    <service.icon className="h-4 w-4 text-accent" />
                     {t(`service.${service.key}`)}
                   </Link>
                 ))}
@@ -197,6 +221,19 @@ export function Header() {
 
               {/* Mobile Actions */}
               <div className="mt-4 flex flex-col gap-2 border-t pt-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={toggleTheme}
+                  className="justify-start gap-2"
+                >
+                  {theme === 'dark' ? (
+                    <Sun className="h-4 w-4" />
+                  ) : (
+                    <Moon className="h-4 w-4" />
+                  )}
+                  {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                </Button>
                 <Button
                   variant="outline"
                   size="sm"
@@ -208,10 +245,11 @@ export function Header() {
                 </Button>
                 <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
                   <a
-                    href="https://pf.kakao.com/_example"
+                    href="https://pf.kakao.com/_WvSxjxj"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    <KakaoIcon />
                     {t('cta.kakao')}
                   </a>
                 </Button>

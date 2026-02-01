@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/lib/i18n";
+import { ThemeProvider } from "@/hooks/use-theme";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import PrivateLesson from "./pages/services/PrivateLesson";
@@ -22,30 +23,32 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/private" element={<PrivateLesson />} />
-            <Route path="/services/online" element={<OnlineLesson />} />
-            <Route path="/services/group" element={<GroupLesson />} />
-            <Route path="/services/global" element={<GlobalClass />} />
-            <Route path="/services/kids" element={<KidsVocal />} />
-            <Route path="/curriculum" element={<Curriculum />} />
-            <Route path="/instructors" element={<Instructors />} />
-            <Route path="/reviews" element={<Reviews />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/services/private" element={<PrivateLesson />} />
+              <Route path="/services/online" element={<OnlineLesson />} />
+              <Route path="/services/group" element={<GroupLesson />} />
+              <Route path="/services/global" element={<GlobalClass />} />
+              <Route path="/services/kids" element={<KidsVocal />} />
+              <Route path="/curriculum" element={<Curriculum />} />
+              <Route path="/instructors" element={<Instructors />} />
+              <Route path="/reviews" element={<Reviews />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/contact" element={<Contact />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

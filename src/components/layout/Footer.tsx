@@ -21,7 +21,7 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t bg-primary text-primary-foreground">
+    <footer className="border-t bg-muted/50 text-foreground">
       <div className="container py-12 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
@@ -29,7 +29,7 @@ export function Footer() {
             <Link to="/" className="inline-block">
               <h3 className="text-xl font-bold">{t('footer.brand')}</h3>
             </Link>
-            <p className="text-sm text-primary-foreground/80">
+            <p className="text-sm text-muted-foreground">
               {t('footer.description')}
             </p>
           </div>
@@ -44,7 +44,7 @@ export function Footer() {
                 <li key={link.key}>
                   <Link
                     to={link.path}
-                    className="text-sm text-primary-foreground/80 transition-colors hover:text-accent"
+                    className="text-sm text-muted-foreground transition-colors hover:text-accent"
                   >
                     {t(link.key)}
                   </Link>
@@ -63,7 +63,7 @@ export function Footer() {
                 <li key={service.key}>
                   <Link
                     to={service.path}
-                    className="text-sm text-primary-foreground/80 transition-colors hover:text-accent"
+                    className="text-sm text-muted-foreground transition-colors hover:text-accent"
                   >
                     {t(`service.${service.key}`)}
                   </Link>
@@ -77,9 +77,9 @@ export function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-accent">
               {t('footer.contact')}
             </h4>
-            <div className="space-y-2 text-sm text-primary-foreground/80">
+            <div className="space-y-2 text-sm text-muted-foreground">
               <a
-                href="https://pf.kakao.com/_example"
+                href="https://pf.kakao.com/_WvSxjxj"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 transition-colors hover:text-accent"
@@ -94,8 +94,8 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 border-t border-primary-foreground/20 pt-8 text-center">
-          <p className="text-sm text-primary-foreground/60">
+        <div className="mt-12 border-t border-border pt-8 text-center">
+          <p className="text-sm text-muted-foreground">
             {t('footer.copyright')}
           </p>
         </div>

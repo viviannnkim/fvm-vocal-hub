@@ -27,30 +27,30 @@ export const translations: Translations = {
   'service.kids': { ko: 'FVM Kids Vocal', en: 'FVM Kids Vocal' },
 
   // Hero Section
-  'hero.title': { ko: 'From Vivian Music', en: 'From Vivian Music' },
-  'hero.subtitle': { ko: '당신의 목소리를 빛나게', en: 'Make Your Voice Shine' },
-  'hero.description': { 
-    ko: '대표가 설계한 체계적인 커리큘럼과 트레이닝된 강사진이 함께하는 프리미엄 보컬 교육',
-    en: 'Premium vocal education with systematic curriculum designed by our founder and trained instructors'
+  'hero.title': { ko: '당신의 목소리가\n가장 빛나는 순간', en: 'Where Your Voice\nShines the Most' },
+  'hero.subtitle': { ko: 'Where Your Voice Shines the Most', en: 'From Vivian Music' },
+  'hero.description': {
+    ko: '체계적인 커리큘럼과 검증된 강사진이 함께하는 프리미엄 보컬 교육',
+    en: 'Premium vocal education with systematic curriculum and verified instructors'
   },
   'hero.cta': { ko: '상담 신청하기', en: 'Book Consultation' },
 
   // Brand Philosophy
   'philosophy.title': { ko: '왜 FVM인가요?', en: 'Why FVM?' },
-  'philosophy.curriculum.title': { ko: '대표 설계 커리큘럼', en: 'Founder-Designed Curriculum' },
-  'philosophy.curriculum.desc': { 
-    ko: '보컬 전문가가 직접 설계한 체계적인 커리큘럼으로 효과적인 성장을 약속합니다.',
-    en: 'Systematic curriculum designed by vocal experts promises effective growth.'
+  'philosophy.curriculum.title': { ko: '대표 설계 프로그램', en: 'Expert-Designed Program' },
+  'philosophy.curriculum.desc': {
+    ko: '10년 이상의 보컬 노하우를 바탕으로 전문가가 직접 설계한 커리큘럼으로 가장 빠르고 안전하게 효과적으로 성장합니다.',
+    en: 'Grow effectively and safely with curriculum directly designed by experts with over 10 years of vocal expertise.'
   },
-  'philosophy.instructors.title': { ko: '트레이닝된 강사진', en: 'Trained Instructors' },
-  'philosophy.instructors.desc': { 
-    ko: '엄격한 교육과정을 거친 전문 강사진이 1:1 맞춤 지도를 제공합니다.',
-    en: 'Professional instructors with rigorous training provide personalized guidance.'
+  'philosophy.instructors.title': { ko: '검증된 강사진', en: 'Verified Instructors' },
+  'philosophy.instructors.desc': {
+    ko: '검증된 실력과 교육 기준을 통과한 트레이닝된 강사진이 일관된 퀄리티의 레슨을 제공합니다.',
+    en: 'Trained instructors who have passed verified skills and education standards provide consistent quality lessons.'
   },
   'philosophy.system.title': { ko: '체계적인 운영 시스템', en: 'Systematic Operations' },
-  'philosophy.system.desc': { 
-    ko: '진도 관리부터 피드백까지, 완벽한 시스템으로 관리합니다.',
-    en: 'From progress tracking to feedback, managed with a perfect system.'
+  'philosophy.system.desc': {
+    ko: '레슨부터 관리까지, 모든 과정이 정리된 체계적인 운영 시스템으로 안정적인 레슨 환경을 제공합니다.',
+    en: 'From lessons to management, our systematic operations provide a stable learning environment.'
   },
 
   // Services Section

@@ -1,20 +1,25 @@
-import { MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n';
+
+function KakaoIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 20 18" fill="currentColor">
+      <path d="M10 0C4.4767 0 0 3.46596 0 7.74549C0 10.5302 1.89737 12.9709 4.74004 14.3335C4.53072 15.1007 3.98379 17.1049 3.87576 17.5348C3.74072 18.0706 4.07157 18.0574 4.2944 17.9185C4.46995 17.806 7.03579 16.0929 8.14315 15.3587C8.74409 15.4447 9.36529 15.491 10 15.491C15.5233 15.491 20 12.025 20 7.74549C20 3.46596 15.5233 0 10 0Z"/>
+    </svg>
+  );
+}
 
 export function KakaoFloatingButton() {
   const { t } = useLanguage();
 
   return (
     <a
-      href="https://pf.kakao.com/_example"
+      href="https://pf.kakao.com/_WvSxjxj"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#FEE500] text-[#3C1E1E] shadow-lg transition-transform hover:scale-110 hover:shadow-xl md:h-16 md:w-16"
+      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#FEE500] text-[#3C1E1E] shadow-lg shadow-black/20 transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
       aria-label={t('cta.kakao')}
     >
-      <svg className="h-7 w-7 md:h-8 md:w-8" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.76 1.84 5.16 4.56 6.48-.2.72-.72 2.64-.84 3.04-.12.52.2.52.4.36.16-.12 2.52-1.68 3.56-2.36.76.12 1.52.16 2.32.16 5.52 0 10-3.48 10-7.68S17.52 3 12 3z"/>
-      </svg>
+      <KakaoIcon className="h-6 w-6" />
     </a>
   );
 }
