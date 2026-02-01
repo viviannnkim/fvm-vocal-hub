@@ -1,177 +1,148 @@
-import { useState } from 'react';
-import { Star } from 'lucide-react';
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/lib/i18n';
-import { cn } from '@/lib/utils';
+
+const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
 const reviews = [
   {
     id: 1,
-    name: { ko: '김서연', en: 'Seoyeon Kim' },
-    service: 'private',
-    rating: 5,
-    content: {
-      ko: '3개월 동안 꾸준히 레슨을 받으면서 고음이 편해지고, 노래에 감정을 담는 법을 배웠어요. 선생님이 정말 체계적으로 가르쳐 주세요!',
-      en: 'After 3 months of consistent lessons, high notes became easier and I learned how to put emotion into my singing. The teacher is very systematic!'
-    },
-    date: '2024.01'
+    name: '이**',
+    content: '지인 축가를 앞두고 여러 선생님들을 찾아본 결과 너무 좋았습니다. 개인 음역과 발성, 습관 그리고 연습을 어떻게 해야할지 잘 집어주어서 당장 노래가 밋밋하지 않게 되는 변화를 수업중에 체감할 수 있었습니다. 아주 만족입니다!',
   },
   {
     id: 2,
-    name: { ko: '이준호', en: 'Junho Lee' },
-    service: 'online',
-    rating: 5,
-    content: {
-      ko: '해외에서 온라인으로 수업 받고 있는데, 대면 못지않게 꼼꼼한 피드백을 받을 수 있어서 만족해요.',
-      en: 'Taking online classes from abroad, and I\'m satisfied with the detailed feedback that rivals in-person lessons.'
-    },
-    date: '2024.02'
+    name: '권**',
+    content: '보컬레슨 처음 받았는데 생각보다 훨씬 체계적이였습니다. 문제점을 잘 짚어주시고 호흡, 발성, 공명 하나씩 교정해주셔서 감을 잡는데 좋았습니다. 특히 제 목소리에 맞는 발성을 알려주셔서 좋았고 수업 분위기도 편해서 긴장 안하고 자연스럽게 노래를 부를 수 있었습니다. 앞으로 얼마나 달라질지 기대됩니다.',
   },
   {
     id: 3,
-    name: { ko: '박지민 (학부모)', en: 'Jimin Park (Parent)' },
-    service: 'kids',
-    rating: 5,
-    content: {
-      ko: '아이가 방문 수업을 너무 좋아해요! 집에서 편하게 배울 수 있어서 부모로서도 만족스럽습니다.',
-      en: 'My child loves the home visit lessons! As a parent, I\'m satisfied that they can learn comfortably at home.'
-    },
-    date: '2024.01'
+    name: 'C*****',
+    content: "I was so nervous to start vocal lessons but I wanted a new hobby and to push myself out of my comfort zone. It was one of the best decisions I made Mona made me feel so comfortable and explained everything in an easy to understand way with no judgement. I can already feel a difference and feel like I'm learning so much, I can't wait to continue and keep growing. I would recommend anyone who's thinking about it to just do it you will definitely enjoy it.",
   },
   {
     id: 4,
-    name: { ko: '최유나', en: 'Yuna Choi' },
-    service: 'group',
-    rating: 5,
-    content: {
-      ko: '친구들과 함께 그룹 레슨을 받고 있어요. 서로 격려하면서 배우니까 더 즐겁고 성장도 빨라요!',
-      en: 'Taking group lessons with friends. Learning while encouraging each other makes it more fun and we grow faster!'
-    },
-    date: '2024.03'
+    name: '박**',
+    content: '저희 아이가 미국에서 줌레슨으로 보컬레슨을 받고 있습니다. 시간대도 잘 맞춰주시고, 줌레슨이어도 꼼꼼하게 잘 봐주셔서 아이가 프로패셔널하게 느껴서 만족입니다. 이제 아이돌 오디션을 앞두고 있는데 좋은 결과가 있기를 기대합니다.',
   },
   {
     id: 5,
-    name: { ko: 'Sarah Johnson', en: 'Sarah Johnson' },
-    service: 'global',
-    rating: 5,
-    content: {
-      ko: 'As a foreigner living in Korea, I wanted to learn K-POP vocal techniques. The Global Class was perfect - all in English with great cultural context!',
-      en: 'As a foreigner living in Korea, I wanted to learn K-POP vocal techniques. The Global Class was perfect - all in English with great cultural context!'
-    },
-    date: '2024.02'
-  },
-  {
-    id: 6,
-    name: { ko: '정민수', en: 'Minsu Jung' },
-    service: 'private',
-    rating: 5,
-    content: {
-      ko: '음치였던 제가 6개월 만에 노래방에서 박수를 받았어요. 체계적인 커리큘럼 덕분입니다.',
-      en: 'I was tone-deaf but after 6 months, I got applause at karaoke. Thanks to the systematic curriculum.'
-    },
-    date: '2024.01'
+    name: '엄**',
+    content: '하는 일 특성상 노래 부를 일이 많습니다. 위축되고 자신감을 잃어가고 있는 중에 선생님을 만났습니다. 시원 시원하게 잘 가르쳐주시고 낯가리는 성격임에도 수업 중에 너무 즐겁고 유쾌합니다. 한시간이 너무 빨리 지나가는 것 같습니다. 앞으로의 수업들도 기대가 됩니다.',
   },
 ];
 
-const filters = [
-  { key: 'all', label: { ko: '전체', en: 'All' } },
-  { key: 'private', label: { ko: '1:1 프라이빗', en: 'Private' } },
-  { key: 'online', label: { ko: '온라인', en: 'Online' } },
-  { key: 'group', label: { ko: '그룹', en: 'Group' } },
-  { key: 'global', label: { ko: '글로벌', en: 'Global' } },
-  { key: 'kids', label: { ko: '키즈', en: 'Kids' } },
-];
+function ReviewCard({ review }: { review: typeof reviews[0] }) {
+  return (
+    <div className="group relative">
+      {/* Card */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-card to-card/80 p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 border border-border/30 hover:border-accent/20">
+        {/* Large Quote Mark */}
+        <div className="absolute -top-2 -left-2 text-[120px] font-serif leading-none text-accent/10 select-none pointer-events-none">
+          "
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10">
+          <p className="text-foreground/80 leading-relaxed mb-8 text-[15px]">
+            {review.content}
+          </p>
+
+          {/* Author */}
+          <div className="flex items-center gap-4">
+            <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+            <span className="text-sm font-medium text-accent">
+              {review.name}
+            </span>
+          </div>
+        </div>
+
+        {/* Subtle glow on hover */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      </div>
+    </div>
+  );
+}
 
 export default function Reviews() {
   const { t, language } = useLanguage();
-  const [activeFilter, setActiveFilter] = useState('all');
-
-  const filteredReviews = activeFilter === 'all' 
-    ? reviews 
-    : reviews.filter(review => review.service === activeFilter);
 
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-gradient-navy py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="mb-4 text-3xl font-bold text-primary-foreground md:text-4xl">
-              {t('reviews.title')}
+            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+              Reviews
+            </p>
+            <h1 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
+              {language === 'ko' ? '수강생이 말하는 FVM' : 'What Students Say About FVM'}
             </h1>
-            <p className="text-lg text-primary-foreground/80">
-              {t('reviews.subtitle')}
+            <p className="text-lg text-muted-foreground">
+              {language === 'ko'
+                ? '실제 수강생들의 생생한 후기를 확인하세요.'
+                : 'Read authentic reviews from our students.'
+              }
             </p>
           </div>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="border-b py-4">
+      {/* Reviews - Masonry-like layout */}
+      <section className="py-16 md:py-24">
         <div className="container">
-          <div className="flex flex-wrap justify-center gap-2">
-            {filters.map((filter) => (
-              <Button
-                key={filter.key}
-                variant={activeFilter === filter.key ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setActiveFilter(filter.key)}
-                className={cn(
-                  activeFilter === filter.key && 'bg-accent text-accent-foreground hover:bg-accent/90'
-                )}
-              >
-                {filter.label[language]}
-              </Button>
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 max-w-6xl mx-auto [column-fill:_balance]">
+            {reviews.map((review) => (
+              <div key={review.id} className="mb-6 break-inside-avoid">
+                <ReviewCard review={review} />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Reviews Grid */}
-      <section className="py-16">
+      {/* Lesson Photos Section */}
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredReviews.map((review) => (
-              <Card key={review.id} className="border-none bg-secondary/30">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-sm font-bold text-accent">
-                        {review.name[language].charAt(0)}
-                      </div>
-                      <div>
-                        <CardTitle className="text-base">{review.name[language]}</CardTitle>
-                        <CardDescription className="text-xs">
-                          {t(`service.${review.service}`)} · {review.date}
-                        </CardDescription>
-                      </div>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: review.rating }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                      ))}
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-foreground/80">"{review.content[language]}"</p>
-                </CardContent>
-              </Card>
+          <div className="mb-12 text-center">
+            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+              Gallery
+            </p>
+            <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl">
+              {language === 'ko' ? '레슨 현장' : 'Lesson Gallery'}
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="aspect-square rounded-2xl bg-secondary/50 flex items-center justify-center"
+              >
+                <p className="text-sm text-muted-foreground">
+                  {language === 'ko' ? '사진 준비 중' : 'Coming Soon'}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-muted/50 py-16">
+      <section className="py-16 md:py-24">
         <div className="container text-center">
-          <h2 className="mb-4 text-2xl font-bold">
+          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
             {language === 'ko' ? '다음 후기의 주인공이 되어보세요' : 'Be the Next Success Story'}
           </h2>
-          <Button asChild size="lg" className="bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
-            <a href="https://pf.kakao.com/_example" target="_blank" rel="noopener noreferrer">
+          <p className="mb-8 text-muted-foreground max-w-md mx-auto">
+            {language === 'ko'
+              ? '지금 바로 상담을 신청하고 변화를 경험하세요.'
+              : 'Book a consultation now and experience the change.'
+            }
+          </p>
+          <Button asChild size="lg" className="h-14 px-8 bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
+            <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
               {t('cta.consult')}
             </a>
           </Button>

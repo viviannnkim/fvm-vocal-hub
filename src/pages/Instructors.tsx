@@ -1,42 +1,147 @@
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/lib/i18n';
 
-const instructors = [
+const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
+
+interface Instructor {
+  id: number;
+  nameKo: string;
+  nameEn: string;
+  role: { ko: string; en: string };
+  specialties: { ko: string[]; en: string[] };
+  experience?: { ko: string; en: string };
+  image?: string;
+}
+
+const instructors: Instructor[] = [
   {
     id: 1,
-    name: { ko: '비비안', en: 'Vivian' },
-    role: { ko: '대표 / 수석 보컬 트레이너', en: 'Founder / Head Vocal Trainer' },
-    specialties: { ko: ['발성 교정', 'K-POP 보컬', '입시 보컬'], en: ['Vocal Correction', 'K-POP Vocals', 'Audition Prep'] },
-    experience: { ko: '10년+ 보컬 트레이닝 경력', en: '10+ years vocal training experience' },
-    image: '/placeholder.svg',
+    nameKo: '비비안',
+    nameEn: 'VIVIAN',
+    role: { ko: '대표 / 보컬 디렉터', en: 'Founder / Vocal Director' },
+    specialties: {
+      ko: ['발성', 'K-POP', '취미/전문/입시', '온라인 클래스'],
+      en: ['Vocalization', 'K-POP', 'Hobby/Pro/Audition', 'Online Class']
+    },
+    experience: { ko: '10년+ 보컬 트레이닝 경력', en: '10+ years vocal training' },
+    image: '/images/profiles/vivian.jpeg',
   },
   {
     id: 2,
-    name: { ko: '수진', en: 'Sujin' },
-    role: { ko: '보컬 트레이너', en: 'Vocal Trainer' },
-    specialties: { ko: ['팝 보컬', '재즈 보컬', '음정 교정'], en: ['Pop Vocals', 'Jazz Vocals', 'Pitch Correction'] },
-    experience: { ko: '7년 보컬 트레이닝 경력', en: '7 years vocal training experience' },
-    image: '/placeholder.svg',
+    nameKo: '모나',
+    nameEn: 'MONA',
+    role: { ko: '보컬 디렉터', en: 'Vocal Director' },
+    specialties: {
+      ko: ['발성', '글로벌 클래스', '취미', '음정교정'],
+      en: ['Vocalization', 'Global Class', 'Hobby', 'Pitch Correction']
+    },
+    image: '/images/profiles/mona.jpeg',
   },
   {
     id: 3,
-    name: { ko: '민준', en: 'Minjun' },
-    role: { ko: '보컬 트레이너', en: 'Vocal Trainer' },
-    specialties: { ko: ['R&B', '소울', '남성 보컬'], en: ['R&B', 'Soul', 'Male Vocals'] },
-    experience: { ko: '5년 보컬 트레이닝 경력', en: '5 years vocal training experience' },
-    image: '/placeholder.svg',
+    nameKo: '수아',
+    nameEn: 'SUA',
+    role: { ko: '보컬 디렉터', en: 'Vocal Director' },
+    specialties: {
+      ko: ['발성', '음정교정', '취미', 'CCM'],
+      en: ['Vocalization', 'Pitch Correction', 'Hobby', 'CCM']
+    },
+    image: '/images/profiles/sua.jpeg',
   },
   {
     id: 4,
-    name: { ko: '하늘', en: 'Haneul' },
-    role: { ko: '키즈 보컬 전문 트레이너', en: 'Kids Vocal Specialist' },
-    specialties: { ko: ['아동 음악 교육', '동요', '뮤지컬'], en: ['Children Music Education', 'Nursery Songs', 'Musical'] },
-    experience: { ko: '6년 아동 음악 교육 경력', en: '6 years children music education' },
-    image: '/placeholder.svg',
+    nameKo: '제이든',
+    nameEn: 'JAYDEN',
+    role: { ko: '보컬 디렉터', en: 'Vocal Director' },
+    specialties: {
+      ko: ['발성', '음정교정', '취미', '팝 보컬'],
+      en: ['Vocalization', 'Pitch Correction', 'Hobby', 'Pop Vocal']
+    },
+    image: '/images/profiles/jayden.jpeg',
+  },
+  {
+    id: 5,
+    nameKo: '리엔',
+    nameEn: 'LIEN',
+    role: { ko: '보컬 디렉터', en: 'Vocal Director' },
+    specialties: {
+      ko: ['발성', '음정교정', '취미', '키즈 보컬'],
+      en: ['Vocalization', 'Pitch Correction', 'Hobby', 'Kids Vocal']
+    },
+  },
+  {
+    id: 6,
+    nameKo: '메이지',
+    nameEn: 'MAISE',
+    role: { ko: '보컬 디렉터', en: 'Vocal Director' },
+    specialties: {
+      ko: ['발성', '음정교정', '취미'],
+      en: ['Vocalization', 'Pitch Correction', 'Hobby']
+    },
   },
 ];
+
+function InstructorCard({ instructor, language }: { instructor: Instructor; language: 'ko' | 'en' }) {
+  const hasImage = instructor.image;
+
+  return (
+    <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-card">
+      {/* Image or Placeholder Background */}
+      {hasImage ? (
+        <img
+          src={instructor.image}
+          alt={`${instructor.nameKo} (${instructor.nameEn})`}
+          className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary to-muted flex items-center justify-center">
+          <span className="text-6xl font-bold text-accent/20">
+            {instructor.nameEn.charAt(0)}
+          </span>
+        </div>
+      )}
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+
+      {/* Content - Always visible at bottom */}
+      <div className="absolute inset-x-0 bottom-0 p-6">
+        {/* Name & Role */}
+        <div className="mb-3">
+          <h3 className="text-xl font-bold text-white">
+            {instructor.nameKo}
+            <span className="ml-2 text-sm font-normal text-white/70">
+              {instructor.nameEn}
+            </span>
+          </h3>
+          <p className="text-sm text-accent">
+            {instructor.role[language]}
+          </p>
+        </div>
+
+        {/* Experience */}
+        {instructor.experience && (
+          <p className="mb-3 text-xs text-white/60">
+            {instructor.experience[language]}
+          </p>
+        )}
+
+        {/* Specialties */}
+        <div className="flex flex-wrap gap-1.5">
+          {instructor.specialties[language].map((specialty) => (
+            <span
+              key={specialty}
+              className="rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-1 text-xs text-white"
+            >
+              {specialty}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Instructors() {
   const { t, language } = useLanguage();
@@ -44,16 +149,19 @@ export default function Instructors() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-gradient-navy py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="mb-4 text-3xl font-bold text-primary-foreground md:text-4xl">
+            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+              Instructors
+            </p>
+            <h1 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
               {t('nav.instructors')}
             </h1>
-            <p className="text-lg text-primary-foreground/80">
+            <p className="text-lg text-muted-foreground">
               {language === 'ko'
-                ? '대표의 엄격한 교육과정을 거친 전문 강사진이 여러분과 함께합니다.'
-                : 'Professional instructors trained through our rigorous program are here for you.'
+                ? '대표 트레이닝을 거친 전문 보컬 디렉터가 함께합니다.'
+                : 'Professional vocal directors trained by our founder are here for you.'
               }
             </p>
           </div>
@@ -63,67 +171,33 @@ export default function Instructors() {
       {/* Instructors Grid */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
             {instructors.map((instructor) => (
-              <Card key={instructor.id} className="overflow-hidden border-none bg-secondary/30">
-                <div className="flex flex-col sm:flex-row">
-                  <div className="aspect-square w-full bg-muted sm:w-48 shrink-0">
-                    <img 
-                      src={instructor.image} 
-                      alt={instructor.name[language]}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <CardHeader>
-                      <CardTitle className="text-xl">{instructor.name[language]}</CardTitle>
-                      <CardDescription className="text-accent font-medium">
-                        {instructor.role[language]}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div>
-                        <p className="text-sm font-medium mb-1">
-                          {language === 'ko' ? '전문 분야' : 'Specialties'}
-                        </p>
-                        <div className="flex flex-wrap gap-1">
-                          {instructor.specialties[language].map((specialty) => (
-                            <span 
-                              key={specialty}
-                              className="rounded-full bg-accent/10 px-2 py-0.5 text-xs text-accent"
-                            >
-                              {specialty}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {instructor.experience[language]}
-                      </p>
-                    </CardContent>
-                  </div>
-                </div>
-              </Card>
+              <InstructorCard
+                key={instructor.id}
+                instructor={instructor}
+                language={language}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Training System */}
-      <section className="bg-muted/50 py-16">
+      {/* Philosophy */}
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-2xl font-bold">
-              {language === 'ko' ? 'FVM 강사 트레이닝 시스템' : 'FVM Instructor Training System'}
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-6 text-2xl font-bold md:text-3xl">
+              {language === 'ko' ? 'FVM 강사 철학' : 'FVM Instructor Philosophy'}
             </h2>
-            <p className="mb-8 text-muted-foreground">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-10">
               {language === 'ko'
-                ? 'FVM의 모든 강사는 대표의 체계적인 트레이닝 프로그램을 이수합니다. 동일한 교육 철학과 방법론을 공유하여 어떤 강사와 함께해도 일관된 품질의 레슨을 받으실 수 있습니다.'
-                : 'All FVM instructors complete our systematic training program. They share the same educational philosophy and methodology, ensuring consistent lesson quality with any instructor.'
+                ? 'FVM 강사진은 대표 트레이닝을 통해 동일한 교육 철학과 방법을 공유하며, 안정적이고 신뢰할 수 있는 레슨을 진행합니다.'
+                : 'FVM instructors share the same educational philosophy and methods through founder training, providing stable and reliable lessons.'
               }
             </p>
-            <Button asChild size="lg" className="bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
-              <a href="https://pf.kakao.com/_example" target="_blank" rel="noopener noreferrer">
+            <Button asChild size="lg" className="h-14 px-8 bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
+              <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
                 {t('cta.consult')}
               </a>
             </Button>
