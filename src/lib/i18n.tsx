@@ -23,7 +23,7 @@ export const translations: Translations = {
   'service.private': { ko: '1:1 프라이빗 보컬레슨', en: '1:1 Private Vocal Lesson' },
   'service.online': { ko: '온라인 보컬레슨', en: 'Online Vocal Lesson' },
   'service.group': { ko: '2:1 그룹 레슨', en: '2:1 Group Lesson' },
-  'service.global': { ko: 'Global Class', en: 'Global Class' },
+  'service.global': { ko: '글로벌 클래스 (Global Class)', en: 'Global Class' },
   'service.kids': { ko: 'FVM 키즈 보컬', en: 'FVM Kids Vocal' },
 
   // Hero Section

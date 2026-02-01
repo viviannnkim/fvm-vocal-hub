@@ -54,11 +54,11 @@ export default function GlobalClass() {
                 <Globe className="h-6 w-6" />
               </div>
               <p className="text-sm font-medium tracking-widest text-accent uppercase">
-                Global Class
+              {language === 'ko' ? '글로벌 클래스 (Global Class)' : 'Global Class'}
               </p>
             </div>
             <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl mb-4">
-              {language === 'ko' ? 'Global Class' : 'Global Class'}
+              {language === 'ko' ? '글로벌 클래스 (Global Class)' : 'Global Class'}
             </h1>
             <p className="text-lg text-muted-foreground mb-6">
               {language === 'ko'

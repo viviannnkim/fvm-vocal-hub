@@ -92,7 +92,7 @@ const instructors: Instructor[] = [
   },
   {
     id: 8,
-    nameKo: '다니앨',
+    nameKo: '다니엘',
     nameEn: 'DANIEL',
     role: { ko: '보컬 디렉터', en: 'Vocal Director' },
     specialties: {
