@@ -25,32 +25,32 @@ const philosophyItems = [
 const reviews = [
   {
     id: 1,
-    name: '김서연',
-    nameEn: 'Seoyeon Kim',
-    service: 'private',
+    name: '이**',
+    tag: { ko: '축가 준비', en: 'Wedding Song' },
+    highlight: { ko: '당장 노래가 밋밋하지 않게 되는 변화', en: 'Immediate improvement' },
     content: {
-      ko: '3개월 동안 꾸준히 레슨을 받으면서 고음이 편해지고, 노래에 감정을 담는 법을 배웠어요. 선생님이 정말 체계적으로 가르쳐 주세요!',
-      en: 'After 3 months of consistent lessons, high notes became easier and I learned how to put emotion into my singing. The teacher is very systematic!'
+      ko: '지인 축가를 앞두고 여러 선생님들을 찾아본 결과 너무 좋았습니다. 개인 음역과 발성, 습관 그리고 연습을 어떻게 해야할지 잘 집어주어서 당장 노래가 밋밋하지 않게 되는 변화를 수업중에 체감할 수 있었습니다.',
+      en: 'I searched for many teachers before a wedding song performance and found the perfect one. The lesson addressed my range, vocalization, habits, and practice methods. I felt immediate improvement during the lesson itself.'
     }
   },
   {
     id: 2,
-    name: '이준호',
-    nameEn: 'Junho Lee',
-    service: 'online',
+    name: '권**',
+    tag: { ko: '보컬 입문', en: 'Beginner' },
+    highlight: { ko: '생각보다 훨씬 체계적', en: 'Very systematic' },
     content: {
-      ko: '해외에서 온라인으로 수업 받고 있는데, 대면 못지않게 꼼꼼한 피드백을 받을 수 있어서 만족해요.',
-      en: 'Taking online classes from abroad, and I\'m satisfied with the detailed feedback that rivals in-person lessons.'
+      ko: '보컬레슨 처음 받았는데 생각보다 훨씬 체계적이였습니다. 문제점을 잘 짚어주시고 호흡, 발성, 공명 하나씩 교정해주셔서 감을 잡는데 좋았습니다.',
+      en: 'This was my first vocal lesson and it was much more systematic than expected. The instructor identified my issues and corrected my breathing, vocalization, and resonance one by one.'
     }
   },
   {
     id: 3,
-    name: '박지민 (학부모)',
-    nameEn: 'Jimin Park (Parent)',
-    service: 'kids',
+    name: 'C*****',
+    tag: { ko: '글로벌 클래스', en: 'Global Class' },
+    highlight: { ko: 'Best decision I made', en: 'Best decision I made' },
     content: {
-      ko: '아이가 방문 수업을 너무 좋아해요! 집에서 편하게 배울 수 있어서 부모로서도 만족스럽습니다.',
-      en: 'My child loves the home visit lessons! As a parent, I\'m satisfied that they can learn comfortably at home.'
+      ko: "보컬 레슨을 시작하기 너무 떨렸지만 새로운 취미를 갖고 도전하고 싶었어요. 정말 최고의 결정이었습니다. 편안하게 느끼게 해주시고 모든 것을 쉽게 설명해 주셨어요.",
+      en: "I was so nervous to start vocal lessons but I wanted a new hobby and to push myself out of my comfort zone. It was one of the best decisions I made. The teacher made me feel so comfortable and explained everything in an easy to understand way."
     }
   },
 ];
@@ -303,26 +303,29 @@ export default function Index() {
 
           <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
             {reviews.map((review) => (
-              <Card key={review.id} className="border border-border/50 bg-card">
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-base font-bold text-accent">
-                      {(language === 'ko' ? review.name : review.nameEn).charAt(0)}
-                    </div>
-                    <div>
-                      <CardTitle className="text-base">
-                        {language === 'ko' ? review.name : review.nameEn}
-                      </CardTitle>
-                      <CardDescription className="text-sm">
-                        {t(`service.${review.service}`)}
-                      </CardDescription>
-                    </div>
+              <Card key={review.id} className="border border-border/50 bg-card hover:border-accent/30 hover:shadow-lg transition-all duration-300">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent/10 text-accent">
+                      {review.tag[language]}
+                    </span>
                   </div>
+                  <CardTitle className="text-lg font-bold leading-snug">
+                    "{review.highlight[language]}"
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    "{review.content[language]}"
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {review.content[language]}
                   </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-border/50">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-sm font-bold text-accent">
+                      {review.name.charAt(0)}
+                    </div>
+                    <span className="text-sm font-medium text-foreground">
+                      {review.name}
+                    </span>
+                  </div>
                 </CardContent>
               </Card>
             ))}

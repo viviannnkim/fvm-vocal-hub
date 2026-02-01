@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Sprout, Check, Heart, Music, Star } from 'lucide-react';
+import { ArrowLeft, Sprout, Check } from 'lucide-react';
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
@@ -11,42 +11,26 @@ export default function KidsVocal() {
 
   const features = language === 'ko'
     ? [
-        '아이 집에서 편하게 받는 방문 수업',
-        '아이 눈높이에 맞춘 재미있는 커리큘럼',
         '정서 발달과 자신감 향상',
-        '음악적 감수성 키우기',
-        '기초 발성부터 동요, 팝송까지',
+        '아이 눈높이에 맞춘 안정적인 수업 진행',
+        '집에서 받는 방문레슨으로 안전한 환경과 높은 집중도 향상',
+        '대표가 직접 설계한 키즈 전용 커리큘럼',
       ]
     : [
-        'Convenient home visit lessons',
-        'Fun curriculum tailored to children',
         'Emotional development and confidence building',
-        'Nurturing musical sensitivity',
-        'From basic vocals to nursery rhymes and pop songs',
+        'Stable lessons tailored to children\'s level',
+        'Safe environment and high focus with home visit lessons',
+        'Kids-only curriculum designed by the director',
       ];
 
   const ageGroups = language === 'ko'
     ? [
-        { age: '5-7세', title: '음악 놀이반', desc: '노래와 율동으로 즐겁게 시작해요' },
-        { age: '8-10세', title: '기초 보컬반', desc: '기본 발성과 음정을 배워요' },
-        { age: '11-13세', title: '주니어 보컬반', desc: '본격적인 보컬 트레이닝 시작' },
+        { age: '8~10세', title: '기초 보컬반', desc: '기본 발성 / 음정을 위주로 즐겁게 시작해요!' },
+        { age: '11~17세', title: '주니어 보컬반', desc: '본격적인 보컬 트레이닝을 시작으로 원하는 장르별로 진행합니다.' },
       ]
     : [
-        { age: '5-7 yrs', title: 'Music Play Class', desc: 'Fun start with songs and movement' },
-        { age: '8-10 yrs', title: 'Basic Vocal Class', desc: 'Learn basic vocalization and pitch' },
-        { age: '11-13 yrs', title: 'Junior Vocal Class', desc: 'Serious vocal training begins' },
-      ];
-
-  const benefits = language === 'ko'
-    ? [
-        { icon: Heart, title: '자신감 향상', desc: '무대에서 빛나는 아이로' },
-        { icon: Music, title: '음악적 감수성', desc: '평생 가는 음악적 재능' },
-        { icon: Star, title: '정서 발달', desc: '감정 표현력 향상' },
-      ]
-    : [
-        { icon: Heart, title: 'Confidence', desc: 'Shine on any stage' },
-        { icon: Music, title: 'Musical Sensitivity', desc: 'Lifelong musical talent' },
-        { icon: Star, title: 'Emotional Growth', desc: 'Better emotional expression' },
+        { age: '8-10 yrs', title: 'Basic Vocal Class', desc: 'Start with basic vocalization and pitch in a fun way!' },
+        { age: '11-17 yrs', title: 'Junior Vocal Class', desc: 'Begin serious vocal training with your preferred genre.' },
       ];
 
   return (
@@ -72,14 +56,22 @@ export default function KidsVocal() {
               </p>
             </div>
             <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl mb-4">
-              {t('service.kids')}
+              {language === 'ko' ? 'FVM 키즈 보컬' : 'FVM Kids Vocal'}
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground mb-6">
               {language === 'ko'
                 ? '아이의 잠재력을 노래로 꽃피워요.'
                 : 'Let your child bloom through singing.'
               }
             </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium">
+              <span>
+                {language === 'ko'
+                  ? '월 220,000원 (주 1회 50분, 월 4회)'
+                  : '₩220,000/month (50 min/session, once a week, 4 sessions)'
+                }
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -129,31 +121,8 @@ export default function KidsVocal() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container">
-          <h2 className="mb-12 text-center text-2xl font-bold md:text-3xl">
-            {language === 'ko' ? '우리 아이에게 주는 선물' : 'Gifts for Your Child'}
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-2xl bg-card border border-border/50 text-center hover:border-accent/30 transition-all hover:shadow-lg"
-              >
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <benefit.icon className="h-7 w-7" />
-                </div>
-                <h3 className="font-bold text-lg mb-2">{benefit.title}</h3>
-                <p className="text-sm text-muted-foreground">{benefit.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container text-center">
           <h2 className="mb-4 text-2xl font-bold md:text-3xl">
             {language === 'ko' ? '우리 아이 첫 보컬 레슨, 상담 신청하기' : "Apply for Your Child's First Vocal Lesson"}

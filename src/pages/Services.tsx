@@ -11,51 +11,56 @@ const services = [
     key: 'private',
     path: '/services/private',
     icon: Mic,
+    price: { ko: '월 200,000원~', en: 'From ₩200,000/mo' },
     features: {
-      ko: ['개인 맞춤형 커리큘럼', '원하는 시간 예약', '1:1 집중 피드백'],
-      en: ['Personalized curriculum', 'Flexible scheduling', '1:1 focused feedback']
+      ko: ['1:1 집중 피드백', '체계적인 발성과 호흡 트레이닝', '단계별 실력향상 관리'],
+      en: ['1:1 focused feedback', 'Systematic voice & breathing training', 'Step-by-step progress']
     },
-    target: { ko: '성인 · 직장인 · 입시생', en: 'Adults · Professionals · Students' }
+    target: { ko: '취미 · 입시 · 전문', en: 'Hobby · Audition · Pro' }
   },
   {
     key: 'online',
     path: '/services/online',
     icon: Monitor,
+    price: { ko: '월 200,000원~', en: 'From ₩200,000/mo' },
     features: {
-      ko: ['언제 어디서나 가능', '녹화 복습 제공', '실시간 화면 공유'],
-      en: ['Anytime, anywhere', 'Recording for review', 'Real-time screen sharing']
+      ko: ['고화질 화상수업 (ZOOM)', '익숙한 공간에서 편하게', '국내·해외 어디서나'],
+      en: ['HD video lessons (ZOOM)', 'Learn in your own space', 'Available worldwide']
     },
-    target: { ko: '해외 거주자 · 바쁜 직장인', en: 'Overseas · Busy professionals' }
+    target: { ko: '국내·해외 거주자', en: 'Domestic · International' }
   },
   {
     key: 'group',
     path: '/services/group',
     icon: Users,
+    price: { ko: '인당 월 150,000원', en: '₩150,000/person/mo' },
     features: {
-      ko: ['소규모 3-5명 구성', '합리적인 수강료', '함께 성장하는 분위기'],
-      en: ['Small groups of 3-5', 'Affordable tuition', 'Collaborative atmosphere']
+      ko: ['2:1 레슨', '함께 듣는 피드백 학습효과', '가성비 있는 수강료'],
+      en: ['2:1 lessons', 'Learning from shared feedback', 'Cost-effective']
     },
-    target: { ko: '친구와 함께 · 취미반', en: 'With friends · Hobby class' }
+    target: { ko: '친구 · 연인과 함께', en: 'With friends · couples' }
   },
   {
     key: 'global',
     path: '/services/global',
     icon: Globe,
+    price: { ko: '월 180,000원~', en: 'From ₩180,000/mo' },
     features: {
-      ko: ['영어로 진행', 'K-POP 보컬 스타일', '문화적 맥락 이해'],
-      en: ['Conducted in English', 'K-POP vocal style', 'Cultural context']
+      ko: ['영어로 진행', 'K-POP 보컬 테크닉', '한국어 발음 교정'],
+      en: ['Conducted in English', 'K-POP vocal techniques', 'Korean pronunciation']
     },
-    target: { ko: '외국인 · 해외 거주자', en: 'Foreigners · Overseas' }
+    target: { ko: '외국인 · 교포', en: 'Foreigners · Korean diaspora' }
   },
   {
     key: 'kids',
     path: '/services/kids',
     icon: Sprout,
+    price: { ko: '월 220,000원', en: '₩220,000/mo' },
     features: {
-      ko: ['가정 방문 수업', '아이 눈높이 커리큘럼', '재미있는 음악 교육'],
-      en: ['Home visit lessons', 'Child-friendly curriculum', 'Fun music education']
+      ko: ['방문레슨으로 안전하게', '대표 직접 설계 커리큘럼', '정서 발달과 자신감 향상'],
+      en: ['Safe home visit lessons', 'Director-designed curriculum', 'Emotional growth']
     },
-    target: { ko: '5-13세 아동', en: 'Ages 5-13' }
+    target: { ko: '8~17세', en: 'Ages 8-17' }
   },
 ];
 
@@ -101,10 +106,13 @@ export default function Services() {
                   </span>
                 </div>
 
-                {/* Title & Description */}
-                <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                {/* Title & Price */}
+                <h3 className="text-xl font-bold mb-1 group-hover:text-accent transition-colors">
                   {t(`service.${service.key}`)}
                 </h3>
+                <p className="text-sm font-medium text-accent mb-3">
+                  {service.price[language]}
+                </p>
                 <p className="text-sm text-muted-foreground mb-4">
                   {t(`service.${service.key}.desc`)}
                 </p>

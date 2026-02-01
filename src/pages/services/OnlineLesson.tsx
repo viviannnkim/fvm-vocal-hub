@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Monitor, Check, Wifi, Camera, Headphones, Volume2 } from 'lucide-react';
+import { ArrowLeft, Monitor, Check, Wifi, Camera, Volume2, FileText } from 'lucide-react';
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
@@ -11,32 +11,30 @@ export default function OnlineLesson() {
 
   const features = language === 'ko'
     ? [
-        '고화질 화상 수업 (Zoom/Google Meet)',
-        '실시간 음성 피드백',
-        '수업 녹화본 제공',
-        '해외 거주자도 수강 가능',
-        '대면 수업과 동일한 커리큘럼',
+        '고화질 화상수업 (ZOOM)',
+        '익숙한 공간에서 편하게 수업',
+        '긴장 없이 소리에 집중할 수 있는 환경',
+        '국내·해외에서 가능',
       ]
     : [
-        'HD video lessons (Zoom/Google Meet)',
-        'Real-time voice feedback',
-        'Lesson recordings provided',
-        'Available for overseas residents',
-        'Same curriculum as in-person',
+        'HD video lessons (ZOOM)',
+        'Learn comfortably in your own space',
+        'Focus on your voice without tension',
+        'Available domestically and internationally',
       ];
 
   const requirements = language === 'ko'
     ? [
-        { icon: Wifi, title: '안정적인 인터넷 연결' },
+        { icon: Wifi, title: '안정적인 인터넷 환경 (Zoom 설치)' },
         { icon: Camera, title: '웹캠 및 마이크' },
         { icon: Volume2, title: '조용한 수업 환경' },
-        { icon: Headphones, title: '이어폰 또는 헤드셋' },
+        { icon: FileText, title: '물 또는 악보 (아이패드 가능)' },
       ]
     : [
-        { icon: Wifi, title: 'Stable internet connection' },
+        { icon: Wifi, title: 'Stable internet (Zoom installed)' },
         { icon: Camera, title: 'Webcam and microphone' },
         { icon: Volume2, title: 'Quiet lesson environment' },
-        { icon: Headphones, title: 'Earphones or headset' },
+        { icon: FileText, title: 'Water or sheet music (iPad OK)' },
       ];
 
   return (
@@ -62,14 +60,22 @@ export default function OnlineLesson() {
               </p>
             </div>
             <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl mb-4">
-              {t('service.online')}
+              {language === 'ko' ? '온라인 보컬레슨' : 'Online Vocal Lesson'}
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground mb-6">
               {language === 'ko'
-                ? '어디서든 프로 트레이너의 레슨을 받아보세요.'
-                : 'Get professional training from anywhere in the world.'
+                ? '어디서든 전문 보컬 트레이너의 레슨을 받을 수 있습니다.'
+                : 'Get professional vocal training from anywhere in the world.'
               }
             </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium">
+              <span>
+                {language === 'ko'
+                  ? '취미반 기준 월 200,000원 (주 1회, 월 4회)'
+                  : 'From ₩200,000/month for hobby class (once a week, 4 sessions)'
+                }
+              </span>
+            </div>
           </div>
         </div>
       </section>

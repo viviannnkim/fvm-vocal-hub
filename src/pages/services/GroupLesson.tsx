@@ -11,30 +11,16 @@ export default function GroupLesson() {
 
   const features = language === 'ko'
     ? [
-        '소규모 3-5명 그룹 구성',
-        '합리적인 수강료',
-        '함께 성장하는 분위기',
-        '하모니 및 합창 연습',
-        '친구와 함께 신청 가능',
+        '다른 사람의 피드백을 함께 듣는 학습효과',
+        '합리적이고 가성비 있는 수강료',
+        '함께 꾸준히 성장하는 분위기',
+        '화음 및 합창 연습',
       ]
     : [
-        'Small groups of 3-5 people',
-        'Affordable tuition',
-        'Collaborative learning atmosphere',
+        'Learning effect from hearing feedback together',
+        'Affordable and cost-effective tuition',
+        'Atmosphere of growing together steadily',
         'Harmony and chorus practice',
-        'Apply with friends',
-      ];
-
-  const groupTypes = language === 'ko'
-    ? [
-        { title: '취미반', desc: '노래를 즐기고 싶은 분들을 위한 편안한 클래스', tag: 'Hobby' },
-        { title: '실력 향상반', desc: '기초부터 탄탄하게 실력을 쌓고 싶은 분들', tag: 'Skill Up' },
-        { title: '오디션 준비반', desc: '오디션을 준비하는 분들을 위한 집중 클래스', tag: 'Audition' },
-      ]
-    : [
-        { title: 'Hobby Class', desc: 'Relaxed class for those who want to enjoy singing', tag: 'Hobby' },
-        { title: 'Skill Improvement', desc: 'For those who want to build solid fundamentals', tag: 'Skill Up' },
-        { title: 'Audition Prep', desc: 'Intensive class for audition preparation', tag: 'Audition' },
       ];
 
   return (
@@ -60,14 +46,22 @@ export default function GroupLesson() {
               </p>
             </div>
             <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl mb-4">
-              {t('service.group')}
+              {language === 'ko' ? '2:1 그룹 레슨' : '2:1 Group Lesson'}
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground mb-6">
               {language === 'ko'
-                ? '함께 성장하는 즐거움을 경험하세요.'
-                : 'Experience the joy of growing together.'
+                ? '친구와 함께, 연인과 함께 성장하는 즐거움을 경험하세요.'
+                : 'Experience the joy of growing together with friends or loved ones.'
               }
             </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium">
+              <span>
+                {language === 'ko'
+                  ? '인당 월 150,000원 (주 1회, 월 4회 기준)'
+                  : '₩150,000/person/month (once a week, 4 sessions)'
+                }
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -75,44 +69,23 @@ export default function GroupLesson() {
       {/* Features */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <div className="grid gap-16 lg:grid-cols-2">
-            <div>
-              <h2 className="mb-8 text-2xl font-bold md:text-3xl">
-                {language === 'ko' ? '그룹 레슨의 장점' : 'Benefits of Group Lessons'}
-              </h2>
-              <ul className="space-y-5">
-                {features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                      <Check className="h-4 w-4" />
-                    </div>
-                    <span className="text-lg">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="mb-8 text-2xl font-bold md:text-3xl">
-                {language === 'ko' ? '그룹 유형' : 'Group Types'}
-              </h2>
-              <div className="space-y-4">
-                {groupTypes.map((item, index) => (
-                  <div
-                    key={index}
-                    className="group p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 transition-all hover:shadow-lg"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent/10 text-accent">
-                        {item.tag}
-                      </span>
-                    </div>
-                    <h3 className="font-bold text-lg mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+          <h2 className="mb-12 text-2xl font-bold md:text-3xl text-center">
+            {language === 'ko' ? '그룹 레슨의 장점' : 'Benefits of Group Lessons'}
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 transition-all hover:shadow-lg"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <Check className="h-5 w-5" />
                   </div>
-                ))}
+                  <span className="text-lg pt-2">{feature}</span>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

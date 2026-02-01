@@ -21,10 +21,10 @@ export const translations: Translations = {
 
   // Services
   'service.private': { ko: '1:1 프라이빗 보컬레슨', en: '1:1 Private Vocal Lesson' },
-  'service.online': { ko: '온라인 보컬 레슨', en: 'Online Vocal Lesson' },
-  'service.group': { ko: '그룹 레슨', en: 'Group Lesson' },
-  'service.global': { ko: '글로벌 클래스', en: 'Global Class' },
-  'service.kids': { ko: 'FVM Kids Vocal', en: 'FVM Kids Vocal' },
+  'service.online': { ko: '온라인 보컬레슨', en: 'Online Vocal Lesson' },
+  'service.group': { ko: '2:1 그룹 레슨', en: '2:1 Group Lesson' },
+  'service.global': { ko: 'Global Class', en: 'Global Class' },
+  'service.kids': { ko: 'FVM 키즈 보컬', en: 'FVM Kids Vocal' },
 
   // Hero Section
   'hero.title': { ko: '당신의 목소리가\n가장 빛나는 순간', en: 'Where Your Voice\nShines the Most' },
@@ -63,25 +63,25 @@ export const translations: Translations = {
   'services.learnMore': { ko: '자세히 보기', en: 'Learn More' },
 
   // Service Descriptions
-  'service.private.desc': { 
+  'service.private.desc': {
     ko: '개인 맞춤형 1:1 보컬 트레이닝으로 당신만의 목소리를 찾아드립니다.',
     en: 'Personalized 1:1 vocal training to help you find your unique voice.'
   },
-  'service.online.desc': { 
-    ko: '언제 어디서나, 온라인으로 받는 프로페셔널 보컬 레슨',
-    en: 'Professional vocal lessons online, anytime, anywhere.'
+  'service.online.desc': {
+    ko: '어디서든 전문 보컬 트레이너의 레슨을 받을 수 있습니다.',
+    en: 'Get professional vocal training from anywhere in the world.'
   },
-  'service.group.desc': { 
-    ko: '함께 성장하는 즐거움, 소규모 그룹 보컬 레슨',
-    en: 'The joy of growing together in small group vocal lessons.'
+  'service.group.desc': {
+    ko: '친구와 함께, 연인과 함께 성장하는 즐거움을 경험하세요.',
+    en: 'Experience the joy of growing together with friends or loved ones.'
   },
-  'service.global.desc': { 
-    ko: '외국인 및 해외 거주자를 위한 영어 보컬 클래스',
-    en: 'English vocal classes for foreigners and overseas residents.'
+  'service.global.desc': {
+    ko: '영어로 진행되는 외국인들을 위한 보컬 수업입니다.',
+    en: 'An English-conducted vocal program for international students.'
   },
-  'service.kids.desc': { 
-    ko: '우리 아이 첫 보컬 레슨, 방문 수업으로 편하게',
-    en: "Your child's first vocal lesson, conveniently at home."
+  'service.kids.desc': {
+    ko: '아이의 잠재력을 노래로 꽃피워요.',
+    en: 'Let your child bloom through singing.'
   },
 
   // Reviews
