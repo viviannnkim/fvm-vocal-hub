@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Monitor, Check } from 'lucide-react';
+import { ArrowLeft, Monitor, Check, Wifi, Camera, Headphones, Volume2 } from 'lucide-react';
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/lib/i18n';
+
+const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
 export default function OnlineLesson() {
   const { t, language } = useLanguage();
 
-  const features = language === 'ko' 
+  const features = language === 'ko'
     ? [
         '고화질 화상 수업 (Zoom/Google Meet)',
         '실시간 음성 피드백',
@@ -25,70 +26,91 @@ export default function OnlineLesson() {
       ];
 
   const requirements = language === 'ko'
-    ? ['안정적인 인터넷 연결', '웹캠 및 마이크', '조용한 수업 환경', '이어폰 또는 헤드셋']
-    : ['Stable internet connection', 'Webcam and microphone', 'Quiet lesson environment', 'Earphones or headset'];
+    ? [
+        { icon: Wifi, title: '안정적인 인터넷 연결' },
+        { icon: Camera, title: '웹캠 및 마이크' },
+        { icon: Volume2, title: '조용한 수업 환경' },
+        { icon: Headphones, title: '이어폰 또는 헤드셋' },
+      ]
+    : [
+        { icon: Wifi, title: 'Stable internet connection' },
+        { icon: Camera, title: 'Webcam and microphone' },
+        { icon: Volume2, title: 'Quiet lesson environment' },
+        { icon: Headphones, title: 'Earphones or headset' },
+      ];
 
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-gradient-navy py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
-          <Link 
-            to="/services" 
-            className="mb-6 inline-flex items-center text-sm text-primary-foreground/70 hover:text-primary-foreground"
+          <Link
+            to="/services"
+            className="mb-8 inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             {t('common.goBack')}
           </Link>
-          <div className="flex items-center gap-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/20 text-accent">
-              <Monitor className="h-8 w-8" />
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold text-primary-foreground md:text-4xl">
-                {t('service.online')}
-              </h1>
-              <p className="text-primary-foreground/80">
-                {t('service.online.desc')}
+
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <Monitor className="h-6 w-6" />
+              </div>
+              <p className="text-sm font-medium tracking-widest text-accent uppercase">
+                Online Lesson
               </p>
             </div>
+            <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl mb-4">
+              {t('service.online')}
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              {language === 'ko'
+                ? '어디서든 프로 트레이너의 레슨을 받아보세요.'
+                : 'Get professional training from anywhere in the world.'
+              }
+            </p>
           </div>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-16">
+      <section className="py-16 md:py-24">
         <div className="container">
-          <div className="grid gap-12 lg:grid-cols-2">
+          <div className="grid gap-16 lg:grid-cols-2">
             <div>
-              <h2 className="mb-6 text-2xl font-bold">
+              <h2 className="mb-8 text-2xl font-bold md:text-3xl">
                 {language === 'ko' ? '온라인 레슨의 장점' : 'Benefits of Online Lessons'}
               </h2>
-              <ul className="space-y-4">
+              <ul className="space-y-5">
                 {features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
+                  <li key={index} className="flex items-start gap-4">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
                       <Check className="h-4 w-4" />
                     </div>
-                    <span>{feature}</span>
+                    <span className="text-lg">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
+
             <div>
-              <h2 className="mb-6 text-2xl font-bold">
+              <h2 className="mb-8 text-2xl font-bold md:text-3xl">
                 {language === 'ko' ? '수업 전 준비물' : 'What You Need'}
               </h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 {requirements.map((item, index) => (
-                  <Card key={index} className="border-none bg-secondary/50">
-                    <CardContent className="flex items-center gap-3 p-4">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-accent-foreground text-sm font-bold">
-                        {index + 1}
+                  <div
+                    key={index}
+                    className="group p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 transition-all hover:shadow-lg"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                        <item.icon className="h-6 w-6" />
                       </div>
-                      <span className="text-sm font-medium">{item}</span>
-                    </CardContent>
-                  </Card>
+                      <span className="font-medium">{item.title}</span>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -97,13 +119,19 @@ export default function OnlineLesson() {
       </section>
 
       {/* CTA */}
-      <section className="bg-muted/50 py-16">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container text-center">
-          <h2 className="mb-4 text-2xl font-bold">
+          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
             {language === 'ko' ? '온라인 레슨 상담 신청하기' : 'Apply for Online Lesson Consultation'}
           </h2>
-          <Button asChild size="lg" className="bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
-            <a href="https://pf.kakao.com/_example" target="_blank" rel="noopener noreferrer">
+          <p className="mb-8 text-muted-foreground max-w-md mx-auto">
+            {language === 'ko'
+              ? '카카오톡으로 편하게 문의해 주세요.'
+              : 'Contact us via KakaoTalk.'
+            }
+          </p>
+          <Button asChild size="lg" className="h-14 px-8 bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
+            <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
               {t('cta.consult')}
             </a>
           </Button>
