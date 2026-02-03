@@ -41,16 +41,16 @@ export default function Curriculum() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+            <p className="mb-2 md:mb-3 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               Curriculum
             </p>
-            <h1 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
+            <h1 className="mb-3 md:mb-4 text-2xl font-bold md:text-4xl lg:text-5xl">
               {t('nav.curriculum')}
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
               {language === 'ko'
                 ? '대표가 직접 설계한 체계적인 커리큘럼으로 효과적인 성장을 약속합니다.'
                 : 'Systematic curriculum designed by our founder promises effective growth.'
@@ -61,13 +61,43 @@ export default function Curriculum() {
       </section>
 
       {/* Curriculum Phases - Zigzag Layout */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-24">
         <div className="container">
-          <h2 className="mb-16 text-center text-2xl font-bold md:text-3xl lg:text-4xl">
+          <h2 className="mb-8 md:mb-16 text-center text-xl font-bold md:text-3xl lg:text-4xl">
             {language === 'ko' ? '단계별 커리큘럼' : 'Step-by-Step Curriculum'}
           </h2>
 
-          <div className="space-y-12 lg:space-y-0">
+          {/* Mobile: Card list with step indicator */}
+          <div className="lg:hidden space-y-4">
+            {phases.map((phase, index) => (
+              <div
+                key={phase.phase}
+                className="relative flex gap-4"
+              >
+                {/* Left: Step indicator */}
+                <div className="flex flex-col items-center">
+                  <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-sm shrink-0 shadow-md">
+                    {phase.phase}
+                  </div>
+                  {index < phases.length - 1 && (
+                    <div className="w-px bg-border/50 flex-1 my-2" />
+                  )}
+                </div>
+                {/* Right: Content */}
+                <div className="flex-1 pb-4">
+                  <div className="p-4 rounded-xl bg-card border border-border/50">
+                    <h3 className="text-base font-bold mb-1">{phase.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {phase.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: Zigzag layout */}
+          <div className="hidden lg:block space-y-0">
             {phases.map((phase, index) => {
               const isEven = index % 2 === 0;
 
@@ -104,7 +134,7 @@ export default function Curriculum() {
                   </div>
 
                   {/* Center Line & Circle (Desktop) */}
-                  <div className="hidden lg:flex flex-col items-center absolute left-1/2 -translate-x-1/2 top-0 h-full">
+                  <div className="flex flex-col items-center absolute left-1/2 -translate-x-1/2 top-0 h-full">
                     {/* Vertical Line */}
                     <div className={cn(
                       "w-px bg-border flex-1",
@@ -122,7 +152,7 @@ export default function Curriculum() {
                   </div>
 
                   {/* Empty space for the other side */}
-                  <div className="hidden lg:block flex-1 lg:w-1/2" />
+                  <div className="flex-1 lg:w-1/2" />
                 </div>
               );
             })}
@@ -131,30 +161,30 @@ export default function Curriculum() {
       </section>
 
       {/* System Features */}
-      <section className="bg-muted/30 py-16 md:py-24">
+      <section className="bg-muted/30 py-12 md:py-24">
         <div className="container">
-          <div className="mb-12 text-center">
-            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+          <div className="mb-8 md:mb-12 text-center">
+            <p className="mb-2 md:mb-3 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               System
             </p>
-            <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl">
+            <h2 className="text-xl font-bold md:text-3xl lg:text-4xl">
               {language === 'ko' ? 'FVM 운영 시스템' : 'FVM Operating System'}
             </h2>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+          <div className="grid gap-3 md:gap-6 grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
             {systemFeatures.map((feature, index) => (
               <Card key={feature.title} className="border border-border/50 bg-card text-center transition-all hover:shadow-lg hover:border-accent/30">
-                <CardContent className="p-6">
-                  <div className="relative mx-auto mb-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent mx-auto">
-                      <feature.icon className="h-7 w-7" />
+                <CardContent className="p-4 md:p-6">
+                  <div className="relative mx-auto mb-3 md:mb-4 w-fit">
+                    <div className="flex h-11 w-11 md:h-14 md:w-14 items-center justify-center rounded-lg md:rounded-xl bg-accent/10 text-accent mx-auto">
+                      <feature.icon className="h-5 w-5 md:h-7 md:w-7" />
                     </div>
-                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-accent-foreground text-xs font-bold flex items-center justify-center">
+                    <span className="absolute -top-1.5 -right-1.5 md:-top-2 md:-right-2 w-5 h-5 md:w-6 md:h-6 rounded-full bg-accent text-accent-foreground text-[10px] md:text-xs font-bold flex items-center justify-center">
                       {index + 1}
                     </span>
                   </div>
-                  <h3 className="mb-2 font-bold">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
+                  <h3 className="mb-1 md:mb-2 text-sm md:text-base font-bold">{feature.title}</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -163,18 +193,18 @@ export default function Curriculum() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24">
-        <div className="container text-center">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
+      <section className="py-12 md:py-24">
+        <div className="container text-center px-6">
+          <h2 className="mb-3 md:mb-4 text-xl font-bold md:text-3xl">
             {language === 'ko' ? '체계적인 보컬 교육을 시작하세요' : 'Start Your Systematic Vocal Education'}
           </h2>
-          <p className="mb-8 text-muted-foreground max-w-md mx-auto">
+          <p className="mb-6 md:mb-8 text-sm md:text-base text-muted-foreground max-w-md mx-auto">
             {language === 'ko'
               ? '카카오톡으로 편하게 상담을 신청해 주세요.'
               : 'Contact us via KakaoTalk for a consultation.'
             }
           </p>
-          <Button asChild size="lg" className="h-14 px-8 bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
+          <Button asChild size="lg" className="h-12 md:h-14 px-6 md:px-8 text-sm md:text-base bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
             <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
               {t('cta.consult')}
             </a>

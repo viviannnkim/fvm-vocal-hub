@@ -106,7 +106,7 @@ function InstructorCard({ instructor, language }: { instructor: Instructor; lang
   const hasImage = instructor.image;
 
   return (
-    <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-card">
+    <div className="group relative aspect-[3/4] overflow-hidden rounded-xl md:rounded-2xl bg-card">
       {/* Image or Placeholder Background */}
       {hasImage ? (
         <img
@@ -116,7 +116,7 @@ function InstructorCard({ instructor, language }: { instructor: Instructor; lang
         />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-secondary to-muted flex items-center justify-center">
-          <span className="text-6xl font-bold text-accent/20">
+          <span className="text-4xl md:text-6xl font-bold text-accent/20">
             {instructor.nameEn.charAt(0)}
           </span>
         </div>
@@ -126,33 +126,33 @@ function InstructorCard({ instructor, language }: { instructor: Instructor; lang
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
       {/* Content - Always visible at bottom */}
-      <div className="absolute inset-x-0 bottom-0 p-6">
+      <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
         {/* Name & Role */}
-        <div className="mb-3">
-          <h3 className="text-xl font-bold text-white">
+        <div className="mb-2 md:mb-3">
+          <h3 className="text-base md:text-xl font-bold text-white">
             {instructor.nameKo}
-            <span className="ml-2 text-sm font-normal text-white/70">
+            <span className="ml-1.5 md:ml-2 text-xs md:text-sm font-normal text-white/70">
               {instructor.nameEn}
             </span>
           </h3>
-          <p className="text-sm text-accent">
+          <p className="text-xs md:text-sm text-accent">
             {instructor.role[language]}
           </p>
         </div>
 
         {/* Experience */}
         {instructor.experience && (
-          <p className="mb-3 text-xs text-white/60">
+          <p className="mb-2 md:mb-3 text-[11px] md:text-xs text-white/60">
             {instructor.experience[language]}
           </p>
         )}
 
         {/* Specialties */}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1 md:gap-1.5">
           {instructor.specialties[language].map((specialty) => (
             <span
               key={specialty}
-              className="rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-1 text-xs text-white"
+              className="rounded-full bg-white/20 backdrop-blur-sm px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs text-white"
             >
               {specialty}
             </span>
@@ -169,16 +169,16 @@ export default function Instructors() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+            <p className="mb-2 md:mb-3 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               Instructors
             </p>
-            <h1 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
+            <h1 className="mb-3 md:mb-4 text-2xl font-bold md:text-4xl lg:text-5xl">
               {t('nav.instructors')}
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
               {language === 'ko'
                 ? '대표 트레이닝을 거친 전문 보컬 디렉터가 함께합니다.'
                 : 'Professional vocal directors trained by our founder are here for you.'
@@ -189,9 +189,9 @@ export default function Instructors() {
       </section>
 
       {/* Instructors Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-24">
         <div className="container">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid gap-3 md:gap-6 grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
             {instructors.map((instructor) => (
               <InstructorCard
                 key={instructor.id}
@@ -204,19 +204,19 @@ export default function Instructors() {
       </section>
 
       {/* Philosophy */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-6 text-2xl font-bold md:text-3xl">
+          <div className="mx-auto max-w-3xl text-center px-2">
+            <h2 className="mb-4 md:mb-6 text-xl font-bold md:text-3xl">
               {language === 'ko' ? 'FVM 강사 철학' : 'FVM Instructor Philosophy'}
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-10">
+            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed mb-8 md:mb-10">
               {language === 'ko'
                 ? 'FVM 강사진은 대표 트레이닝을 통해 동일한 교육 철학과 방법을 공유하며, 안정적이고 신뢰할 수 있는 레슨을 진행합니다.'
                 : 'FVM instructors share the same educational philosophy and methods through founder training, providing stable and reliable lessons.'
               }
             </p>
-            <Button asChild size="lg" className="h-14 px-8 bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
+            <Button asChild size="lg" className="h-12 md:h-14 px-6 md:px-8 text-sm md:text-base bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
               <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
                 {t('cta.consult')}
               </a>

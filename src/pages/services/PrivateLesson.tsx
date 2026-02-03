@@ -54,35 +54,35 @@ export default function PrivateLesson() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">
           <Link
             to="/services"
-            className="mb-8 inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors"
+            className="mb-6 md:mb-8 inline-flex items-center text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" />
+            <ArrowLeft className="mr-1.5 md:mr-2 h-3.5 w-3.5 md:h-4 md:w-4" />
             {t('common.goBack')}
           </Link>
 
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                <Mic className="h-6 w-6" />
+            <div className="flex items-center gap-2.5 md:gap-3 mb-3 md:mb-4">
+              <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-lg md:rounded-xl bg-accent/10 text-accent">
+                <Mic className="h-5 w-5 md:h-6 md:w-6" />
               </div>
-              <p className="text-sm font-medium tracking-widest text-accent uppercase">
+              <p className="text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
                 Private Lesson
               </p>
             </div>
-            <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl mb-4">
+            <h1 className="text-2xl font-bold md:text-4xl lg:text-5xl mb-3 md:mb-4">
               {language === 'ko' ? '1:1 프라이빗 보컬레슨' : '1:1 Private Vocal Lesson'}
             </h1>
-            <p className="text-lg text-muted-foreground mb-6">
+            <p className="text-sm md:text-lg text-muted-foreground mb-4 md:mb-6 leading-relaxed">
               {language === 'ko'
                 ? '개인 맞춤형 1:1 보컬 트레이닝으로 당신만의 목소리를 찾아드립니다.'
                 : 'Find your unique voice with personalized 1:1 vocal training.'
               }
             </p>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium">
+            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-accent/10 text-accent text-xs md:text-sm font-medium">
               <span>
                 {language === 'ko'
                   ? '취미반 기준 월 200,000원~ (전문·입시 별도)'
@@ -90,11 +90,11 @@ export default function PrivateLesson() {
                 }
               </span>
             </div>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-6 md:mt-8 flex flex-wrap gap-2 md:gap-4">
               {highlights.map((highlight, index) => (
-                <div key={index} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border/50">
-                  <Check className="h-4 w-4 text-accent" />
-                  <span className="text-sm font-medium">{highlight}</span>
+                <div key={index} className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-card border border-border/50">
+                  <Check className="h-3.5 w-3.5 md:h-4 md:w-4 text-accent" />
+                  <span className="text-xs md:text-sm font-medium">{highlight}</span>
                 </div>
               ))}
             </div>
@@ -103,46 +103,46 @@ export default function PrivateLesson() {
       </section>
 
       {/* Features */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-24">
         <div className="container">
-          <div className="grid gap-16 lg:grid-cols-2">
+          <div className="grid gap-10 md:gap-16 lg:grid-cols-2">
             <div>
-              <h2 className="mb-8 text-2xl font-bold md:text-3xl">
+              <h2 className="mb-6 md:mb-8 text-xl font-bold md:text-3xl">
                 {language === 'ko' ? '이런 분들에게 추천해요!' : 'Recommended for!'}
               </h2>
-              <ul className="space-y-5">
+              <ul className="space-y-3 md:space-y-5">
                 {features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                      <Check className="h-4 w-4" />
+                  <li key={index} className="flex items-start gap-3 md:gap-4">
+                    <div className="flex h-6 w-6 md:h-7 md:w-7 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                      <Check className="h-3.5 w-3.5 md:h-4 md:w-4" />
                     </div>
-                    <span className="text-lg">{feature}</span>
+                    <span className="text-sm md:text-lg">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h2 className="mb-4 text-2xl font-bold md:text-3xl">
+              <h2 className="mb-3 md:mb-4 text-xl font-bold md:text-3xl">
                 {language === 'ko' ? '레슨 진행 방식' : 'Lesson Process'}
               </h2>
-              <p className="mb-8 text-sm text-muted-foreground">
+              <p className="mb-6 md:mb-8 text-xs md:text-sm text-muted-foreground">
                 {language === 'ko' ? '(취미반 기준, 전문·입시 별도)' : '(Hobby class standard, Professional/Audition separate)'}
               </p>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-2">
                 {process.map((item) => (
                   <div
                     key={item.step}
-                    className="group p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 transition-all hover:shadow-lg"
+                    className="group p-4 md:p-6 rounded-xl md:rounded-2xl bg-card border border-border/50 hover:border-accent/30 transition-all hover:shadow-lg"
                   >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                        <item.icon className="h-5 w-5" />
+                    <div className="flex items-center gap-2.5 md:gap-3 mb-2 md:mb-3">
+                      <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-lg md:rounded-xl bg-accent/10 text-accent">
+                        <item.icon className="h-4 w-4 md:h-5 md:w-5" />
                       </div>
-                      <span className="text-2xl font-bold text-accent/50">{item.step}</span>
+                      <span className="text-xl md:text-2xl font-bold text-accent/50">{item.step}</span>
                     </div>
-                    <h3 className="font-bold text-lg mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    <h3 className="font-bold text-sm md:text-lg mb-1">{item.title}</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -152,18 +152,18 @@ export default function PrivateLesson() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container text-center">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
+      <section className="py-12 md:py-24 bg-muted/30">
+        <div className="container text-center px-6">
+          <h2 className="mb-3 md:mb-4 text-xl font-bold md:text-3xl">
             {language === 'ko' ? '1:1 레슨 상담 신청하기' : 'Apply for 1:1 Lesson Consultation'}
           </h2>
-          <p className="mb-8 text-muted-foreground max-w-md mx-auto">
+          <p className="mb-6 md:mb-8 text-sm md:text-base text-muted-foreground max-w-md mx-auto">
             {language === 'ko'
               ? '카카오톡으로 편하게 문의해 주세요.'
               : 'Contact us via KakaoTalk.'
             }
           </p>
-          <Button asChild size="lg" className="h-14 px-8 bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
+          <Button asChild size="lg" className="h-12 md:h-14 px-6 md:px-8 text-sm md:text-base bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
             <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
               {t('cta.consult')}
             </a>

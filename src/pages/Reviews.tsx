@@ -51,9 +51,9 @@ function ReviewCard({ review, language, featured = false }: { review: typeof rev
       featured && "sm:col-span-2 lg:col-span-2"
     )}>
       <div className={cn(
-        "relative h-full overflow-hidden rounded-2xl border border-border/50 transition-all duration-300",
-        "hover:border-accent/50 hover:shadow-xl hover:-translate-y-1",
-        featured ? "p-8" : "p-6"
+        "relative h-full overflow-hidden rounded-xl md:rounded-2xl border border-border/50 transition-all duration-300",
+        "hover:border-accent/50 hover:shadow-xl md:hover:-translate-y-1",
+        featured ? "p-5 md:p-8" : "p-4 md:p-6"
       )}>
         {/* Background */}
         <div className="absolute inset-0 bg-card" />
@@ -61,21 +61,21 @@ function ReviewCard({ review, language, featured = false }: { review: typeof rev
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full">
           {/* Header: Tag + Stars */}
-          <div className="flex items-center justify-between mb-4">
-            <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent/20 text-accent">
+          <div className="flex items-center justify-between mb-3 md:mb-4">
+            <span className="px-2.5 py-0.5 md:px-3 md:py-1 text-[11px] md:text-xs font-medium rounded-full bg-accent/20 text-accent">
               {review.tag[language]}
             </span>
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
+                <Star key={i} className="w-3 h-3 md:w-3.5 md:h-3.5 fill-accent text-accent" />
               ))}
             </div>
           </div>
 
           {/* Highlight Quote */}
           <p className={cn(
-            "font-bold text-foreground mb-4",
-            featured ? "text-xl lg:text-2xl" : "text-lg"
+            "font-bold text-foreground mb-3 md:mb-4",
+            featured ? "text-base md:text-xl lg:text-2xl" : "text-sm md:text-lg"
           )}>
             "{review.highlight[language]}"
           </p>
@@ -83,19 +83,19 @@ function ReviewCard({ review, language, featured = false }: { review: typeof rev
           {/* Full Content */}
           <p className={cn(
             "text-foreground/70 leading-relaxed flex-1",
-            featured ? "text-base" : "text-sm"
+            featured ? "text-sm md:text-base" : "text-xs md:text-sm"
           )}>
             {review.content}
           </p>
 
           {/* Author */}
-          <div className="mt-6 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-              <span className="text-sm font-bold text-accent">
+          <div className="mt-4 md:mt-6 flex items-center gap-2.5 md:gap-3">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/20 flex items-center justify-center">
+              <span className="text-xs md:text-sm font-bold text-accent">
                 {review.name.charAt(0)}
               </span>
             </div>
-            <span className="font-medium text-foreground">
+            <span className="text-sm md:text-base font-medium text-foreground">
               {review.name}
             </span>
           </div>
@@ -111,16 +111,16 @@ export default function Reviews() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+            <p className="mb-2 md:mb-3 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               Reviews
             </p>
-            <h1 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
+            <h1 className="mb-3 md:mb-4 text-2xl font-bold md:text-4xl lg:text-5xl">
               {language === 'ko' ? '수강생이 말하는 FVM' : 'What Students Say About FVM'}
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
               {language === 'ko'
                 ? '실제 수강생들의 생생한 후기를 확인하세요.'
                 : 'Read authentic reviews from our students.'
@@ -131,9 +131,9 @@ export default function Reviews() {
       </section>
 
       {/* Reviews - Bento Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-24">
         <div className="container">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto auto-rows-fr">
+          <div className="grid gap-3 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto auto-rows-fr">
             {reviews.map((review, index) => (
               <ReviewCard
                 key={review.id}
@@ -147,24 +147,24 @@ export default function Reviews() {
       </section>
 
       {/* Lesson Photos Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">
-          <div className="mb-12 text-center">
-            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+          <div className="mb-8 md:mb-12 text-center">
+            <p className="mb-2 md:mb-3 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               Gallery
             </p>
-            <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl">
+            <h2 className="text-xl font-bold md:text-3xl lg:text-4xl">
               {language === 'ko' ? '레슨 현장' : 'Lesson Gallery'}
             </h2>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+          <div className="grid gap-3 md:gap-4 grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="aspect-square rounded-2xl bg-secondary/50 flex items-center justify-center"
+                className="aspect-square rounded-xl md:rounded-2xl bg-secondary/50 flex items-center justify-center"
               >
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs md:text-sm text-muted-foreground">
                   {language === 'ko' ? '사진 준비 중' : 'Coming Soon'}
                 </p>
               </div>
@@ -174,18 +174,18 @@ export default function Reviews() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24">
-        <div className="container text-center">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
+      <section className="py-12 md:py-24">
+        <div className="container text-center px-6">
+          <h2 className="mb-3 md:mb-4 text-xl font-bold md:text-3xl">
             {language === 'ko' ? '다음 후기의 주인공이 되어보세요' : 'Be the Next Success Story'}
           </h2>
-          <p className="mb-8 text-muted-foreground max-w-md mx-auto">
+          <p className="mb-6 md:mb-8 text-sm md:text-base text-muted-foreground max-w-md mx-auto">
             {language === 'ko'
               ? '지금 바로 상담을 신청하고 변화를 경험하세요.'
               : 'Book a consultation now and experience the change.'
             }
           </p>
-          <Button asChild size="lg" className="h-14 px-8 bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
+          <Button asChild size="lg" className="h-12 md:h-14 px-6 md:px-8 text-sm md:text-base bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90">
             <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
               {t('cta.consult')}
             </a>

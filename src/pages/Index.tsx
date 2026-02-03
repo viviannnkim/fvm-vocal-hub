@@ -69,21 +69,21 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section - 2 Column Layout */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
 
         {/* Subtle accent glow */}
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-accent/5 rounded-full blur-3xl" />
 
-        <div className="container relative z-10 py-16 md:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="container relative z-10 py-10 md:py-24">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left - Founder Image */}
             <div className="relative order-2 lg:order-1">
-              <div className="relative aspect-[4/5] max-w-md mx-auto lg:mx-0">
+              <div className="relative aspect-[3/4] md:aspect-[4/5] max-w-[280px] md:max-w-md mx-auto lg:mx-0">
                 {/* Image Container with accent border */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 -rotate-3" />
-                <div className="relative h-full rounded-2xl overflow-hidden border border-border/50 bg-card">
+                <div className="relative h-full rounded-2xl overflow-hidden border border-border/50 bg-card shadow-xl">
                   <img
                     src="/images/profiles/vivian.jpeg"
                     alt="Vivian - FVM 대표"
@@ -113,31 +113,31 @@ export default function Index() {
             {/* Right - Content */}
             <div className="order-1 lg:order-2 text-center lg:text-left">
               {/* Brand Tag */}
-              <p className="mb-4 text-sm font-medium tracking-widest text-accent uppercase">
+              <p className="mb-3 md:mb-4 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
                 From Vivian Music
               </p>
 
               {/* Main Headline */}
-              <h1 className="mb-4 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl leading-snug lg:leading-normal whitespace-pre-line">
+              <h1 className="mb-3 md:mb-4 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-5xl lg:text-6xl leading-tight md:leading-snug lg:leading-normal whitespace-pre-line">
                 {t('hero.title')}
               </h1>
 
               {/* English Subtitle */}
-              <p className="mb-2 text-base text-muted-foreground sm:text-lg md:text-xl font-light tracking-wide">
+              <p className="mb-2 text-sm text-muted-foreground sm:text-base md:text-xl font-light tracking-wide">
                 {language === 'ko' ? 'Where Your Voice Shines the Most' : t('hero.subtitle')}
               </p>
 
               {/* Description */}
-              <p className="mb-8 text-base text-muted-foreground md:text-lg max-w-xl mx-auto lg:mx-0">
+              <p className="mb-6 md:mb-8 text-sm md:text-base text-muted-foreground lg:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 {t('hero.description')}
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
                 <Button
                   asChild
                   size="lg"
-                  className="h-14 px-8 text-base bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg shadow-accent/20"
+                  className="h-12 md:h-14 px-6 md:px-8 text-sm md:text-base bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg shadow-accent/20"
                 >
                   <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
                     <KakaoIcon />
@@ -148,7 +148,7 @@ export default function Index() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="h-14 px-8 text-base border-border hover:bg-muted"
+                  className="h-12 md:h-14 px-6 md:px-8 text-sm md:text-base border-border hover:bg-muted"
                 >
                   <Link to="/services">
                     {t('services.viewAll')}
@@ -158,15 +158,15 @@ export default function Index() {
               </div>
 
               {/* Trust indicators */}
-              <div className="mt-10 pt-8 border-t border-border/50">
-                <div className="flex flex-wrap justify-center lg:justify-start gap-8 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Award className="h-5 w-5 text-accent" />
-                    <span>{language === 'ko' ? '전문 보컬 트레이너' : 'Professional Trainer'}</span>
+              <div className="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-border/50">
+                <div className="grid grid-cols-2 gap-4 md:flex md:flex-wrap md:justify-center lg:justify-start md:gap-8 text-xs md:text-sm text-muted-foreground">
+                  <div className="flex items-center justify-center md:justify-start gap-2 p-3 md:p-0 rounded-lg bg-muted/50 md:bg-transparent">
+                    <Award className="h-4 w-4 md:h-5 md:w-5 text-accent flex-shrink-0" />
+                    <span className="font-medium">{language === 'ko' ? '전문 트레이너' : 'Professional'}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-5 w-5 text-accent" />
-                    <span>{language === 'ko' ? '1,000+ 수강생' : '1,000+ Students'}</span>
+                  <div className="flex items-center justify-center md:justify-start gap-2 p-3 md:p-0 rounded-lg bg-muted/50 md:bg-transparent">
+                    <Users className="h-4 w-4 md:h-5 md:w-5 text-accent flex-shrink-0" />
+                    <span className="font-medium">{language === 'ko' ? '1,000+ 수강생' : '1,000+ Students'}</span>
                   </div>
                 </div>
               </div>
@@ -183,41 +183,46 @@ export default function Index() {
       </section>
 
       {/* Brand Philosophy Section */}
-      <section className="py-24 md:py-32 bg-muted/30">
+      <section className="py-16 md:py-32 bg-muted/30">
         <div className="container">
-          <div className="mb-16 text-center">
-            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+          <div className="mb-10 md:mb-16 text-center">
+            <p className="mb-2 md:mb-3 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               Why FVM
             </p>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            <h2 className="text-2xl font-bold tracking-tight md:text-4xl lg:text-5xl">
               {t('philosophy.title')}
             </h2>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid gap-4 md:gap-8 md:grid-cols-3 max-w-6xl mx-auto">
             {philosophyItems.map((item, index) => (
               <div
                 key={item.key}
                 className="group relative"
               >
-                <div className="relative p-8 rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5">
+                <div className="relative p-5 md:p-8 rounded-xl md:rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5">
                   {/* Number Badge */}
-                  <span className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center">
+                  <span className="absolute -top-2 -left-2 md:-top-3 md:-left-3 w-6 h-6 md:w-8 md:h-8 rounded-full bg-accent text-accent-foreground text-xs md:text-sm font-bold flex items-center justify-center">
                     {index + 1}
                   </span>
 
-                  {/* Icon */}
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
-                    <item.icon className="h-7 w-7" />
-                  </div>
+                  {/* Mobile: Horizontal layout / Desktop: Vertical layout */}
+                  <div className="flex items-start gap-4 md:block">
+                    {/* Icon */}
+                    <div className="flex-shrink-0 flex h-11 w-11 md:h-14 md:w-14 md:mb-6 items-center justify-center rounded-lg md:rounded-xl bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                      <item.icon className="h-5 w-5 md:h-7 md:w-7" />
+                    </div>
 
-                  {/* Content */}
-                  <h3 className="mb-3 text-xl font-bold">
-                    {t(`philosophy.${item.key}.title`)}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {t(`philosophy.${item.key}.desc`)}
-                  </p>
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="mb-1 md:mb-3 text-base md:text-xl font-bold">
+                        {t(`philosophy.${item.key}.title`)}
+                      </h3>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                        {t(`philosophy.${item.key}.desc`)}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -226,21 +231,21 @@ export default function Index() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 md:py-32">
         <div className="container">
-          <div className="mb-16 text-center">
-            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+          <div className="mb-8 md:mb-16 text-center">
+            <p className="mb-2 md:mb-3 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               Services
             </p>
-            <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            <h2 className="mb-2 md:mb-4 text-2xl font-bold tracking-tight md:text-4xl lg:text-5xl">
               {t('services.title')}
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-sm md:text-lg text-muted-foreground">
               {t('services.subtitle')}
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid gap-3 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
             {services.map((service) => (
               <Link
                 key={service.key}
@@ -251,22 +256,24 @@ export default function Index() {
                   "h-full border border-border/50 transition-all duration-300 hover:border-accent/50 hover:shadow-lg",
                   service.isKids && "bg-gradient-to-br from-kids-peach/10 to-kids-coral/5"
                 )}>
-                  <CardHeader>
-                    <div className={cn(
-                      "mb-3 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300",
-                      service.isKids
-                        ? "bg-kids-coral/20 text-kids-coral group-hover:bg-kids-coral group-hover:text-white"
-                        : "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground"
-                    )}>
-                      <service.icon className="h-6 w-6" />
+                  <CardHeader className="p-4 md:p-6 pb-2 md:pb-3">
+                    <div className="flex items-center gap-3 md:block">
+                      <div className={cn(
+                        "flex-shrink-0 md:mb-3 flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-lg md:rounded-xl transition-all duration-300",
+                        service.isKids
+                          ? "bg-kids-coral/20 text-kids-coral group-hover:bg-kids-coral group-hover:text-white"
+                          : "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground"
+                      )}>
+                        <service.icon className="h-5 w-5 md:h-6 md:w-6" />
+                      </div>
+                      <CardTitle className="flex items-center gap-2 text-base md:text-lg group-hover:text-accent transition-colors">
+                        {t(`service.${service.key}`)}
+                        <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                      </CardTitle>
                     </div>
-                    <CardTitle className="flex items-center gap-2 text-lg group-hover:text-accent transition-colors">
-                      {t(`service.${service.key}`)}
-                      <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
-                    </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base leading-relaxed">
+                  <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
+                    <CardDescription className="text-sm md:text-base leading-relaxed">
                       {t(`service.${service.key}.desc`)}
                     </CardDescription>
                   </CardContent>
@@ -275,8 +282,8 @@ export default function Index() {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <Button asChild variant="outline" size="lg" className="h-12 px-8">
+          <div className="mt-8 md:mt-12 text-center">
+            <Button asChild variant="outline" size="lg" className="h-11 md:h-12 px-6 md:px-8 text-sm md:text-base">
               <Link to="/services">
                 {t('services.viewAll')}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -287,52 +294,55 @@ export default function Index() {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-24 md:py-32 bg-muted/30">
+      <section className="py-16 md:py-32 bg-muted/30">
         <div className="container">
-          <div className="mb-16 text-center">
-            <p className="mb-3 text-sm font-medium tracking-widest text-accent uppercase">
+          <div className="mb-8 md:mb-16 text-center">
+            <p className="mb-2 md:mb-3 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               Reviews
             </p>
-            <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            <h2 className="mb-2 md:mb-4 text-2xl font-bold tracking-tight md:text-4xl lg:text-5xl">
               {t('reviews.title')}
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-sm md:text-lg text-muted-foreground">
               {t('reviews.subtitle')}
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
-            {reviews.map((review) => (
-              <Card key={review.id} className="border border-border/50 bg-card hover:border-accent/30 hover:shadow-lg transition-all duration-300">
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent/10 text-accent">
-                      {review.tag[language]}
-                    </span>
-                  </div>
-                  <CardTitle className="text-lg font-bold leading-snug">
-                    "{review.highlight[language]}"
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                    {review.content[language]}
-                  </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-border/50">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-sm font-bold text-accent">
-                      {review.name.charAt(0)}
+          {/* Mobile: Horizontal scroll / Desktop: Grid */}
+          <div className="md:grid md:gap-6 md:grid-cols-3 md:max-w-6xl md:mx-auto">
+            <div className="flex md:contents gap-4 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+              {reviews.map((review) => (
+                <Card key={review.id} className="flex-shrink-0 w-[85vw] max-w-[320px] md:w-auto md:max-w-none snap-center border border-border/50 bg-card hover:border-accent/30 hover:shadow-lg transition-all duration-300">
+                  <CardHeader className="p-4 md:p-6 pb-2 md:pb-3">
+                    <div className="flex items-center justify-between mb-2 md:mb-3">
+                      <span className="px-2.5 py-1 text-[11px] md:text-xs font-medium rounded-full bg-accent/10 text-accent">
+                        {review.tag[language]}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-foreground">
-                      {review.name}
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                    <CardTitle className="text-base md:text-lg font-bold leading-snug">
+                      "{review.highlight[language]}"
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-3 md:mb-4 line-clamp-4 md:line-clamp-none">
+                      {review.content[language]}
+                    </p>
+                    <div className="flex items-center gap-2.5 md:gap-3 pt-3 md:pt-4 border-t border-border/50">
+                      <div className="flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full bg-accent/10 text-xs md:text-sm font-bold text-accent">
+                        {review.name.charAt(0)}
+                      </div>
+                      <span className="text-sm font-medium text-foreground">
+                        {review.name}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <Button asChild variant="outline" size="lg" className="h-12 px-8">
+          <div className="mt-8 md:mt-12 text-center">
+            <Button asChild variant="outline" size="lg" className="h-11 md:h-12 px-6 md:px-8 text-sm md:text-base">
               <Link to="/reviews">
                 {t('common.viewMore')}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -343,21 +353,21 @@ export default function Index() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
+      <section className="py-16 md:py-32 relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-card via-card to-accent/5" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-accent/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 md:w-96 h-48 md:h-96 bg-accent/5 rounded-full blur-3xl" />
 
         <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-sm font-medium tracking-widest text-accent uppercase">
+          <div className="mx-auto max-w-3xl text-center px-2">
+            <p className="mb-3 md:mb-4 text-xs md:text-sm font-semibold tracking-widest text-accent uppercase">
               Get Started
             </p>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            <h2 className="mb-4 md:mb-6 text-2xl font-bold tracking-tight md:text-4xl lg:text-5xl">
               {language === 'ko' ? '지금 바로 상담을 시작하세요' : 'Start Your Consultation Today'}
             </h2>
-            <p className="mb-10 text-lg text-muted-foreground max-w-xl mx-auto">
+            <p className="mb-8 md:mb-10 text-sm md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
               {language === 'ko'
                 ? '카카오톡으로 편하게 문의해 주세요. 전문 상담사가 빠르게 답변 드리겠습니다.'
                 : 'Contact us via KakaoTalk. Our specialists will respond promptly.'
@@ -366,7 +376,7 @@ export default function Index() {
             <Button
               asChild
               size="lg"
-              className="h-16 px-10 text-lg bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90 shadow-xl"
+              className="h-14 md:h-16 px-8 md:px-10 text-base md:text-lg bg-[#FEE500] text-[#3C1E1E] hover:bg-[#FEE500]/90 shadow-xl"
             >
               <a href={KAKAO_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
                 <KakaoIcon />
