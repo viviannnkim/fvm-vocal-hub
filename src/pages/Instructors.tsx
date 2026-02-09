@@ -72,16 +72,6 @@ const instructors: Instructor[] = [
   },
   {
     id: 6,
-    nameKo: '메이지',
-    nameEn: 'MAISIE',
-    role: { ko: '보컬 디렉터', en: 'Vocal Director' },
-    specialties: {
-      ko: ['발성', '음정교정', '취미'],
-      en: ['Vocalization', 'Pitch Correction', 'Hobby']
-    },
-  },
-  {
-    id: 7,
     nameKo: '루나',
     nameEn: 'LUNA',
     role: { ko: '보컬 디렉터', en: 'Vocal Director' },
@@ -91,7 +81,7 @@ const instructors: Instructor[] = [
     },
   },
   {
-    id: 8,
+    id: 7,
     nameKo: '다니엘',
     nameEn: 'DANIEL',
     role: { ko: '보컬 디렉터', en: 'Vocal Director' },
