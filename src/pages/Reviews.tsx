@@ -158,15 +158,17 @@ export default function Reviews() {
             </h2>
           </div>
 
-          <div className="grid gap-3 md:gap-4 grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-            {[1, 2, 3, 4].map((i) => (
+          <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+            {[1, 2, 3, 4, 5, 6, 7].map((i) => (
               <div
                 key={i}
-                className="aspect-square rounded-xl md:rounded-2xl bg-secondary/50 flex items-center justify-center"
+                className="aspect-[3/2] rounded-xl md:rounded-2xl overflow-hidden bg-secondary/50"
               >
-                <p className="text-xs md:text-sm text-muted-foreground">
-                  {language === 'ko' ? '사진 준비 중' : 'Coming Soon'}
-                </p>
+                <img
+                  src={`/images/lesson-photos/${i}.${[3, 7].includes(i) ? 'JPG' : 'jpeg'}`}
+                  alt={language === 'ko' ? `레슨 현장 ${i}` : `Lesson photo ${i}`}
+                  className="w-full h-full object-cover"
+                />
               </div>
             ))}
           </div>
