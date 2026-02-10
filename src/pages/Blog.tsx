@@ -4,6 +4,7 @@ import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const posts = [
   {
@@ -57,6 +58,11 @@ export default function Blog() {
 
   return (
     <Layout>
+      <SEO
+        title="블로그 - 보컬 트레이닝 팁과 소식"
+        description="FVM 블로그에서 보컬 트레이닝 팁, 발성 연습법, 노래 잘 부르는 법 등 유용한 보컬 정보를 확인하세요."
+        path="/blog"
+      />
       {/* Hero */}
       <section className="bg-gradient-navy py-16 md:py-24">
         <div className="container">

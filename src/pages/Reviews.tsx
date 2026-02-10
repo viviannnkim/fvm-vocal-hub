@@ -3,6 +3,7 @@ import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -110,6 +111,11 @@ export default function Reviews() {
 
   return (
     <Layout>
+      <SEO
+        title="수강생 후기 - 보컬 레슨 리뷰"
+        description="FVM 수강생들의 생생한 보컬 레슨 후기를 확인하세요. 실제 수강생들이 경험한 보컬 트레이닝의 변화와 성장 이야기입니다."
+        path="/reviews"
+      />
       {/* Hero */}
       <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">

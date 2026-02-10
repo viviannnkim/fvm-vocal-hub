@@ -3,6 +3,7 @@ import { ArrowLeft, Sprout, Check } from 'lucide-react';
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -35,6 +36,11 @@ export default function KidsVocal() {
 
   return (
     <Layout>
+      <SEO
+        title="FVM 키즈 보컬 레슨"
+        description="아이의 잠재력을 노래로 꽃피워요. 대표가 직접 설계한 키즈 전용 커리큘럼으로 정서 발달과 자신감 향상을 돕는 어린이 보컬 레슨입니다."
+        path="/services/kids"
+      />
       {/* Hero */}
       <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">

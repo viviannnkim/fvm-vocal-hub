@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -40,6 +41,11 @@ export default function Curriculum() {
 
   return (
     <Layout>
+      <SEO
+        title="커리큘럼 - 체계적인 보컬 트레이닝 시스템"
+        description="FVM의 체계적인 보컬 커리큘럼을 소개합니다. 기초 발성부터 테크닉, 감정표현까지 단계별로 설계된 프리미엄 보컬 교육 프로그램입니다."
+        path="/curriculum"
+      />
       {/* Hero */}
       <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">

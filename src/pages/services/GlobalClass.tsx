@@ -3,6 +3,7 @@ import { ArrowLeft, Globe, Check } from 'lucide-react';
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -37,6 +38,11 @@ export default function GlobalClass() {
 
   return (
     <Layout>
+      <SEO
+        title="글로벌 클래스 - Global Vocal Class"
+        description="English-conducted vocal lessons for international students. Learn K-POP vocal techniques and Korean music culture with professional trainers."
+        path="/services/global"
+      />
       {/* Hero */}
       <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">

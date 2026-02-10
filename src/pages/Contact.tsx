@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const faqs = [
   {
@@ -48,6 +49,11 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SEO
+        title="문의하기 - 상담 및 FAQ"
+        description="FVM 보컬 레슨 상담 및 자주 묻는 질문을 확인하세요. 카카오톡으로 간편하게 레슨 상담을 받으실 수 있습니다."
+        path="/contact"
+      />
       {/* Hero */}
       <section className="bg-gradient-navy py-16 md:py-24">
         <div className="container">

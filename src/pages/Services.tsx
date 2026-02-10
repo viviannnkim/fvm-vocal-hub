@@ -3,6 +3,7 @@ import { ArrowRight, Mic, Monitor, Users, Globe, Sprout } from 'lucide-react';
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -69,6 +70,11 @@ export default function Services() {
 
   return (
     <Layout>
+      <SEO
+        title="서비스 안내 - 보컬 레슨 프로그램"
+        description="FVM의 다양한 보컬 레슨 프로그램을 확인하세요. 1:1 프라이빗, 온라인, 2:1 그룹, 글로벌 클래스, 키즈 보컬 등 맞춤형 보컬 교육을 제공합니다."
+        path="/services"
+      />
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">

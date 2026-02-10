@@ -3,6 +3,7 @@ import { ArrowLeft, Users, Check } from 'lucide-react';
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -25,6 +26,11 @@ export default function GroupLesson() {
 
   return (
     <Layout>
+      <SEO
+        title="2:1 그룹 보컬 레슨"
+        description="친구와 함께, 연인과 함께 성장하는 즐거움을 경험하세요. 합리적인 수강료로 함께 꾸준히 성장하는 2:1 그룹 보컬 레슨입니다."
+        path="/services/group"
+      />
       {/* Hero */}
       <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">

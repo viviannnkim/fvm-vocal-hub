@@ -3,6 +3,7 @@ import { ArrowLeft, Monitor, Check, Wifi, Camera, Volume2, FileText } from 'luci
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -39,6 +40,11 @@ export default function OnlineLesson() {
 
   return (
     <Layout>
+      <SEO
+        title="온라인 보컬 레슨"
+        description="어디서든 전문 보컬 트레이너의 레슨을 받을 수 있습니다. ZOOM을 통한 고화질 화상수업으로 국내외 어디서나 보컬 트레이닝이 가능합니다."
+        path="/services/online"
+      />
       {/* Hero */}
       <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">

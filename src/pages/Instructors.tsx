@@ -1,6 +1,7 @@
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -158,6 +159,11 @@ export default function Instructors() {
 
   return (
     <Layout>
+      <SEO
+        title="강사진 소개 - 검증된 보컬 트레이너"
+        description="FVM의 검증된 보컬 강사진을 소개합니다. 전문 트레이닝을 거친 강사들이 일관된 퀄리티의 보컬 레슨을 제공합니다."
+        path="/instructors"
+      />
       {/* Hero */}
       <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">

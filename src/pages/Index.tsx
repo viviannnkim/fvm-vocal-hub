@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -68,6 +69,11 @@ export default function Index() {
 
   return (
     <Layout>
+      <SEO
+        title="FVM - From Vivian Music | 프리미엄 보컬 교육"
+        description="FVM은 대표 설계 커리큘럼과 트레이닝된 강사진이 함께하는 프리미엄 보컬 교육 브랜드입니다. 1:1 프라이빗, 온라인, 그룹, 글로벌, 키즈 보컬 레슨을 제공합니다."
+        path="/"
+      />
       {/* Hero Section - 2 Column Layout */}
       <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
         {/* Background */}

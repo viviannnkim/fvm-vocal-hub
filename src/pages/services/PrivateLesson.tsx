@@ -3,6 +3,7 @@ import { ArrowLeft, Mic, Check, Clock, Target, BookOpen, MessageSquare } from 'l
 import { Layout } from '@/components/layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/i18n';
+import SEO from '@/components/SEO';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_WvSxjxj';
 
@@ -53,6 +54,11 @@ export default function PrivateLesson() {
 
   return (
     <Layout>
+      <SEO
+        title="1:1 프라이빗 보컬 레슨"
+        description="개인 맞춤형 1:1 보컬 트레이닝으로 당신만의 목소리를 찾아드립니다. 체계적인 발성과 호흡 트레이닝, 단계별 실력향상 관리를 제공합니다."
+        path="/services/private"
+      />
       {/* Hero */}
       <section className="py-12 md:py-24 bg-muted/30">
         <div className="container">
